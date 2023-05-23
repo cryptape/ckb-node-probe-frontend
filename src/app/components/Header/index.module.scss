@@ -1,0 +1,94 @@
+.header{
+  background-color: #26282F;
+  @include for-pad {
+    padding: 0 20px;
+  }
+
+  @include for-mobile {
+    padding: 0 20px;
+  }
+
+  .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+  
+    span,a{
+      color: #FFF;
+    }
+
+    .logo{
+      img{
+        width: 34px;
+        height: 38px;
+        vertical-align: bottom;
+
+        @include for-mobile {
+          width: 24px;
+          height: 28px;
+        }
+      }
+
+      span{
+        font-size: 24px;
+        line-height: 36px;
+        margin-left: 20px;
+        vertical-align: middle;
+
+        @include for-mobile {
+          font-size: 20px;
+          line-height: 32px;
+        }
+      }
+    }
+
+    .right{
+      .menu{
+        @include for-mobile {
+          display: none;
+        }
+      }
+      .mobile{
+        display: none;
+        @include for-mobile {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.mobileDrawer{
+  :global{
+    .ant-drawer-body{
+      padding: 20px;
+      background-color: #131417;
+
+      >span{
+        float: right;
+
+        svg{
+          width: 14px;
+          height: 14px;
+          fill: white;
+        }
+
+
+      }
+      ul{
+        padding: 0;
+        margin: 0;
+        margin-top: 30px;
+        list-style: none;
+
+        li{
+          color: white;
+          height: 30px;
+          line-height: 30px;
+        }
+      }
+
+    }
+  }
+}

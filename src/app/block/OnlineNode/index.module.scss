@@ -1,0 +1,14 @@
+.onlineNode{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 90px;
+  background: linear-gradient(270.38deg, #0FF082 9.68%, #00AEFC 97.16%), #FFFFFF;
+  border-radius: 16px;
+  margin: 20px 0;
+
+  h1,p{
+    margin: 0;
+  }
+}

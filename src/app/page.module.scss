@@ -1,0 +1,22 @@
+.main{
+  @include for-pad {
+    padding: 0 20px;
+  }
+
+  @include for-mobile {
+    padding: 0 20px;
+  }
+}
+
+.group{
+  display: flex;
+  justify-content: space-between;
+
+  @include for-pad {
+    flex-direction: column;
+  }
+
+  @include for-mobile {
+    flex-direction: column;
+  }
+}

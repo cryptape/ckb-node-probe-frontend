@@ -1,0 +1,117 @@
+body {
+  background-color: #131417;
+}
+
+.ckb-container{
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.ckb-header-bar{
+  display: flex;
+  height: 48px;
+  align-items: center;
+  font-size: 18px;
+  padding: 0 20px;
+  color: white;
+  box-shadow: 0px 1px 0px #464A57;
+
+  &::before{
+    content: '';
+    display: block;
+    width: 8px;
+    height: 22px;
+    background-color: #0FF082;
+    margin-right: 10px;
+  }
+}
+
+.ckb-footer-label{
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  color: #999999;
+  padding-bottom: 15px;
+}
+
+.ant-dropdown-menu{
+  background-color: #26282F !important;
+}
+
+.ant-dropdown-menu-item{
+  color: white !important;
+}
+
+.leaflet-control-attribution{
+  display: none;
+}
+
+.leaflet-top.leaflet-right{
+  .leaflet-control-zoom-in, .leaflet-control-zoom-out{
+    display: none;
+  }
+}
+
+.leaflet-bar a, .leaflet-bar a:hover{
+  background-color: #26282F !important;
+  border: none !important;
+}
+
+.leaflet-control-zoom-in{
+  margin-bottom: 10px !important;
+}
+
+.leaflet-control-zoom a{
+  color: #00AEFC !important;
+}
+
+.fullscreen-icon{
+  background-image: url('/fullscreen.svg') !important;
+}
+
+.leaflet-touch .leaflet-bar, .leaflet-touch .leaflet-control-layers{
+  border: none !important;
+}
+
+.marker-cluster-small {
+	background-color: white;
+}
+.marker-cluster-small div {
+	background-color: #00AEFC;
+}
+
+.marker-cluster-medium {
+	background-color: white;
+}
+.marker-cluster-medium div {
+	background-color: #00AEFC;
+}
+
+.marker-cluster-large {
+	background-color: white;
+}
+.marker-cluster-large div {
+	background-color: #00AEFC;
+}
+
+.marker-cluster {
+	background-clip: padding-box;
+	border-radius: 20px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+.marker-cluster div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 36px;
+  color: white;
+  font-size: 18px;
+  line-height: 27px;
+}
+.marker-cluster span {
+	line-height: 30px;
+}
