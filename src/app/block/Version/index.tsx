@@ -2,6 +2,7 @@
 import { Data } from '@/interface/page';
 import { Chart } from '@antv/g2';
 import { useEffect } from 'react';
+import { isMobileDevice } from '@/app/utils';
 import styles from './index.module.scss';
 
 interface VersionProps {
@@ -37,7 +38,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
       container,
       theme: 'classic',
       autoFit: true,
-      paddingLeft: 100,
+      paddingLeft: isMobileDevice() ? 70 : 100,
     });
 
     chart.coordinate({ transform: [{ type: 'transpose' }] });
@@ -48,7 +49,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
       .data(graphData)
       .encode('x', 'version')
       .encode('y', 'value')
-      .encode('size', 24)
+      .encode('size', isMobileDevice() ? 14 : 24)
       .style('fill', (target: { color: string }, index: number) => index < 3 ? '#6CE37C' : '#00AEFC')
       .label({
         text: 'value',

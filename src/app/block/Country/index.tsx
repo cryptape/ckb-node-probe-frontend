@@ -2,6 +2,7 @@
 import { Data } from '@/interface/page';
 import { Chart } from '@antv/g2';
 import { useEffect } from 'react';
+import { isMobileDevice } from '@/app/utils/index';
 import { Renderer as GRenderer } from '@antv/g-svg';
 import styles from './index.module.scss';
 
@@ -60,7 +61,7 @@ const Country: React.FC<CountryProps> = ({ data }) => {
           transform: 'translate(-5, 0)',
         }
       })
-      .encode('size', 24)
+      .encode('size', isMobileDevice() ? 14 : 24)
       .axis('x', {
         title: false,
         labelFormatter: (datum: string) => {
