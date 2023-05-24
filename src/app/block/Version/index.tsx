@@ -54,6 +54,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
         text: 'value',
         style: {
           fill: '#fff',
+          transform: 'translate(-5, 0)',
         }
       })
       .axis('x', {

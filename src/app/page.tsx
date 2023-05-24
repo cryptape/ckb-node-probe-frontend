@@ -14,7 +14,8 @@ export default function Home() {
 
   useEffect(() => {
     async function load() {
-      const loadData = await fetch(`//api-${location.hostname || 'nodes-dev.ckbapp.dev'}/peer?network=${type}`);
+      const url = location.hostname === 'localhost' ? 'nodes-dev.ckbapp.dev' : location.hostname;
+      const loadData = await fetch(`//api-${url}/peer?network=${type}`);
       const result = await loadData.json();
       setData(result);
     }

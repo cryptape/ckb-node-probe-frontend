@@ -31,7 +31,6 @@ const Country: React.FC<CountryProps> = ({ data }) => {
       return { 
         version: key.split('(')[0], 
         value: countryCount[key],
-        color: '#00AEFC', // #6CE37C
       };
     });
 
@@ -39,7 +38,7 @@ const Country: React.FC<CountryProps> = ({ data }) => {
       container,
       theme: 'classic',
       autoFit: true,
-      paddingLeft: 100,
+      paddingLeft: 80,
     });
 
     chart.coordinate({ transform: [{ type: 'transpose' }] });
@@ -50,11 +49,12 @@ const Country: React.FC<CountryProps> = ({ data }) => {
       .data(graphData)
       .encode('x', 'version')
       .encode('y', 'value')
-      .encode('color', 'color')
+      // .encode('color', (target: { color: string }, index: number) => index < 3 ? '#6CE37C' : target.color)
       .label({
         text: 'value',
         style: {
           fill: '#fff',
+          transform: 'translate(-5, 0)',
         }
       })
       .axis('x', {
@@ -90,6 +90,7 @@ const Country: React.FC<CountryProps> = ({ data }) => {
 
           group.appendChild(icon);
           group.appendChild(label);
+          
           return group;
         },
         style: {
