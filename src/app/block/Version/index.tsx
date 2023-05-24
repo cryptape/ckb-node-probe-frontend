@@ -48,6 +48,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
       .data(graphData)
       .encode('x', 'version')
       .encode('y', 'value')
+      .encode('size', 24)
       .style('fill', (target: { color: string }, index: number) => index < 3 ? '#6CE37C' : '#00AEFC')
       .label({
         text: 'value',
@@ -57,6 +58,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
         }
       })
       .axis('x', {
+        title: false,
         style: {
           titleStroke: '#FFF',
           titleFill: '#FFF',  
@@ -72,6 +74,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
         }
       })
       .axis('y', {
+        title: false,
         style: {
           titleStroke: '#FFF',
           titleFill: '#FFF',  

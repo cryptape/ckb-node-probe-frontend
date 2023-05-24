@@ -58,9 +58,12 @@ const Country: React.FC<CountryProps> = ({ data }) => {
           transform: 'translate(-5, 0)',
         }
       })
+      .encode('size', 24)
       .axis('x', {
+        title: false,
         labelFormatter: (datum: string) => {
           const { document } = chart.getContext().canvas!;
+
           const group = document.createElement('g', {
             style: {
               transform: 'translate(-15, 0)',
@@ -109,6 +112,7 @@ const Country: React.FC<CountryProps> = ({ data }) => {
         }
       })
       .axis('y', {
+        title: false,
         style: {
           titleStroke: '#FFF',
           titleFill: '#FFF',  

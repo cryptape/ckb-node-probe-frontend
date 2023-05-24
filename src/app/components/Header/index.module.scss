@@ -1,5 +1,9 @@
 .header{
   background-color: #26282F;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+
   @include for-pad {
     padding: 0 20px;
   }
