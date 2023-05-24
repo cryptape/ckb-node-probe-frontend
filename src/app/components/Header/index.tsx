@@ -4,7 +4,6 @@ import { Drawer, Dropdown, Space } from 'antd';
 import { CloseOutlined, DownOutlined, MenuOutlined } from '@ant-design/icons';
 import Image from 'next/image';
 import Icon from './icon.png';
-
 import styles from './index.module.scss';
 
 interface HeaderProps {

@@ -6,7 +6,6 @@ import Version from './block/Version';
 import Country from './block/Country';
 import className from 'classnames';
 import OnlineNode from './block/OnlineNode';
-
 import styles from './page.module.scss';
 
 export default function Home() {
