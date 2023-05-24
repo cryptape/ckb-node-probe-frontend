@@ -29,8 +29,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
 
     let graphData = Object.keys(versionCount).map((key, index) => ({ 
       version: key.split('(')[0], 
-      value: versionCount[key],
-      color: '#00AEFC' // #6CE37C
+      value: versionCount[key]
     }))
     .sort((pre, next) => next.value - pre.value);
 
@@ -49,7 +48,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
       .data(graphData)
       .encode('x', 'version')
       .encode('y', 'value')
-      .encode('color', 'color')
+      .style('fill', (target: { color: string }, index: number) => index < 3 ? '#6CE37C' : '#00AEFC')
       .label({
         text: 'value',
         style: {

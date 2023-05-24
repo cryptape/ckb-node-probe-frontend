@@ -49,7 +49,8 @@ const Country: React.FC<CountryProps> = ({ data }) => {
       .data(graphData)
       .encode('x', 'version')
       .encode('y', 'value')
-      // .encode('color', (target: { color: string }, index: number) => index < 3 ? '#6CE37C' : target.color)
+      .encode('color', 'value')
+      .style('fill', (target: { color: string }, index: number) => index < 3 ? '#6CE37C' : '#00AEFC')
       .label({
         text: 'value',
         style: {
