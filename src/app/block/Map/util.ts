@@ -18,6 +18,7 @@ export function renderMapGraph(data: Data[]) {
   if (!data.length) return;
 
   document.querySelectorAll('.leaflet-control-zoom,.leaflet-control-zoom-fullscreen').forEach(target => target.remove());
+  document.querySelector(".leaflet-heatmap-layer")?.remove();
   const markerTarget = document.querySelector('.leaflet-marker-pane');
   if (markerTarget) markerTarget.innerHTML = '';
 
@@ -26,11 +27,11 @@ export function renderMapGraph(data: Data[]) {
   map.addControl(L.control.zoom({ position: 'bottomright' }));
   map.addControl(L.control.fullscreen({ position: 'topright' }));
 
-  const markers = L.markerClusterGroup();
-  data.forEach(({ city, latitude, longitude }) => {
-    const marker = L.marker(new L.LatLng(latitude, longitude), { title: city });
-    marker.bindPopup(city);
-    markers.addLayer(marker);
-  });
-  map.addLayer(markers);
+  const heatMapData = [] as object[];
+  data.forEach(({ latitude, longitude }) => {
+    if (latitude === null && longitude === null) return;
+    heatMapData.push([latitude, longitude, 5000]);
+  })
+
+  L.heatLayer(heatMapData, { radius: 15 }).addTo(map);
 }

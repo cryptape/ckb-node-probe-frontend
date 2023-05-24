@@ -193,6 +193,33 @@
     "@antv/util" "^3.3.1"
     tslib "^2.3.1"
 
+"@antv/g-plugin-svg-picker@^1.7.50":
+  version "1.7.50"
+  resolved "https://registry.npmjs.org/@antv/g-plugin-svg-picker/-/g-plugin-svg-picker-1.7.50.tgz#05fb00324cd3bfb2962ffe319703f4df44ce1abe"
+  integrity sha512-eJTYkjVToTozrH+PbIXNPpXVR4cHK6HggFRYBkjNMLCC8s/o9LQy7XL2NJJmLIxEwpYeDULxsPnMrYkiuWbRgg==
+  dependencies:
+    tslib "^2.3.1"
+
+"@antv/g-plugin-svg-renderer@^1.8.57":
+  version "1.8.57"
+  resolved "https://registry.npmjs.org/@antv/g-plugin-svg-renderer/-/g-plugin-svg-renderer-1.8.57.tgz#3b72b6d155da003e82e12a58f82194182c865662"
+  integrity sha512-ovbH7K54sUePvqN+PlDEu87zCX3V/M14h04jPs+2ra2p/z6sYUUVjHU9VjWSKNkYk5kDaRhghlgyCRmWcUfESQ==
+  dependencies:
+    "@antv/util" "^3.3.1"
+    gl-matrix "^3.1.0"
+    tslib "^2.3.1"
+
+"@antv/g-svg@^1.8.57":
+  version "1.8.57"
+  resolved "https://registry.npmjs.org/@antv/g-svg/-/g-svg-1.8.57.tgz#d24e77aa86557c8a3dd3ddd3388791c5a107999f"
+  integrity sha512-iN4rDBcP2RzFKKseFXygekh9NsSHh73ekhvEweXXHLAKuF3dFVD7gr1jQMwApModXpfIe49dOG06fcAOPffqyg==
+  dependencies:
+    "@antv/g-plugin-dom-interaction" "^1.7.49"
+    "@antv/g-plugin-svg-picker" "^1.7.50"
+    "@antv/g-plugin-svg-renderer" "^1.8.57"
+    "@antv/util" "^3.3.1"
+    tslib "^2.3.1"
+
 "@antv/g-web-animations-api@^1.0.38":
   version "1.0.38"
   resolved "https://registry.npmjs.org/@antv/g-web-animations-api/-/g-web-animations-api-1.0.38.tgz#2f8ef034753d8fdf7eab05bb78422d07ec3aa981"

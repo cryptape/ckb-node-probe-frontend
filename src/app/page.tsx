@@ -9,7 +9,7 @@ import OnlineNode from './block/OnlineNode';
 import styles from './page.module.scss';
 
 export default function Home() {
-  const [type, setType] = useState('pudge');
+  const [type, setType] = useState('mirana');
   const [data, setData] = useState([]);
 
   useEffect(() => {

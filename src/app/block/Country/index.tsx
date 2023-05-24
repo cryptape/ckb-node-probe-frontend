@@ -2,6 +2,7 @@
 import { Data } from '@/interface/page';
 import { Chart } from '@antv/g2';
 import { useEffect } from 'react';
+import { Renderer as GRenderer } from '@antv/g-svg';
 import styles from './index.module.scss';
 
 interface CountryProps {
@@ -39,6 +40,7 @@ const Country: React.FC<CountryProps> = ({ data }) => {
       theme: 'classic',
       autoFit: true,
       paddingLeft: 80,
+      renderer: new GRenderer()
     });
 
     chart.coordinate({ transform: [{ type: 'transpose' }] });
@@ -64,11 +66,7 @@ const Country: React.FC<CountryProps> = ({ data }) => {
         labelFormatter: (datum: string) => {
           const { document } = chart.getContext().canvas!;
 
-          const group = document.createElement('g', {
-            style: {
-              transform: 'translate(-15, 0)',
-            }
-          });
+          const group = document.createElement('g', {});
           const icon = document.createElement('image', {
             style: {
               src: `/flags/1x1/${datum.toLowerCase()}.svg`,

@@ -15,11 +15,11 @@ interface VersionCount {
 const Version: React.FC<VersionProps> = ({ data }) => {
   const versionCount: VersionCount = {};
 
-  data.forEach(({ version }) => {
-    if (version in versionCount) {
-      versionCount[version]++;
+  data.forEach(({ version_short }) => {
+    if (version_short in versionCount) {
+      versionCount[version_short]++;
     } else {
-      versionCount[version] = 1;
+      versionCount[version_short] = 1;
     }
   });
 
@@ -28,7 +28,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
     if (!document.getElementById(container)) return;
 
     let graphData = Object.keys(versionCount).map((key, index) => ({ 
-      version: key.split('(')[0], 
+      version: key, 
       value: versionCount[key]
     }))
     .sort((pre, next) => next.value - pre.value);

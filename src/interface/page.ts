@@ -6,5 +6,6 @@ export interface Data {
   country: string,
   city: string,
   latitude: number,
-  longitude: number
+  longitude: number,
+  version_short: string,
 }

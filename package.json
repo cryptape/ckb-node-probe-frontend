@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.0",
+    "@antv/g-svg": "^1.8.57",
     "@antv/g2": "^5.0.8",
     "@types/node": "20.2.1",
     "@types/react": "18.2.6",
