@@ -70,7 +70,6 @@ export function renderMapGraph(data: Data[]) {
       return container;
     };
     moveControl.addTo(map);
+    map.dragging.disable();
   }
-
-  map.dragging.disable();
 }
