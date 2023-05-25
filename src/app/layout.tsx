@@ -2,8 +2,8 @@ import Script from 'next/script'
 import './globals.scss'
 
 export const metadata = {
-  title: 'CKB Full Node Probe',
-  description: 'CKB Full Node Probe',
+  title: 'CKB Full Nodes',
+  description: 'CKB Full Nodes',
 }
 
 export default function RootLayout({

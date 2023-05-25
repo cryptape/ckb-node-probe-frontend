@@ -33,5 +33,8 @@ export default function Home() {
         <Version data={data} />
       </div>
     </main>
+    <footer className={className('ckb-container', styles.footer)}>
+      
+    </footer>
   </>
 }

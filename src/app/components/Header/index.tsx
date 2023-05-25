@@ -15,12 +15,12 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
   const [open, setOpen] = useState(false);
   const items = [
     {
-      label: 'mirana',
+      label: 'Mirana (CKB Mainnet)',
       key: 'mirana',
       onClick: () => setType('mirana')
     },
     {
-      label: 'pudge',
+      label: 'Pudge (CKB Testnet)',
       key: 'pudge',
       onClick: () => setType('pudge')
     }
@@ -31,13 +31,13 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
       <div className={`ckb-container ${styles.container}`}>
         <div className={styles.logo}>
           <Image src={Icon} alt='LOGO' />
-          <span>CKB Full Node Probe</span>
+          <span>CKB Full Nodes</span>
         </div>
         <div className={styles.right}>
           <div className={styles.menu}>
             <Dropdown menu={{ items }}>
               <a onClick={(e) => e.preventDefault()}>
-                <Space>{type}<DownOutlined /></Space>
+                <Space>{items.filter(item => item.key === type)[0].label}<DownOutlined /></Space>
               </a>
             </Dropdown>
           </div>
@@ -48,7 +48,8 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
             title={null}
             placement={'left'}
             closable={false}
-            width={'40vw'}
+            width={'60vw'}
+            rootStyle={{ zIndex: 10001 }}
             onClose={() => setOpen(false)}
             open={open}
             className={styles.mobileDrawer}

@@ -55,7 +55,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
         text: 'value',
         style: {
           fill: '#fff',
-          transform: 'translate(-5, 0)',
+          transform: isMobileDevice() ? 'translate(0, 0)' : 'translate(-5, 0)',
         }
       })
       .axis('x', {

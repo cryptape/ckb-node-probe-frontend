@@ -127,7 +127,7 @@ const Country: React.FC<CountryProps> = ({ data }) => {
       .legend(false);
 
     chart.render();
-  }, [data])
+  }, [data]);
 
   return (
     <div className={styles.country}>

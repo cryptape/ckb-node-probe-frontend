@@ -7,6 +7,21 @@
   .countryGraph{
     min-height: 350px;
 
+    @include for-mobile {
+      position: relative;
+
+      &::before{
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
     :global{
       .axis-main-group{
         .axis-label-group{

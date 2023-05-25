@@ -45,6 +45,10 @@ body {
   color: white !important;
 }
 
+.ant-message{
+  z-index: 10002 !important;
+}
+
 .leaflet-control-attribution{
   display: none;
 }
@@ -70,6 +74,27 @@ body {
 
 .fullscreen-icon{
   background-image: url('/fullscreen.svg') !important;
+}
+
+.move-control{
+  span{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #26282F;
+    background-size: 60%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+.lock-icon{
+  background-image: url('/lock.svg') !important;
+}
+
+.unlock-icon{
+  background-image: url('/unlock.svg') !important;
+  background-size: 26px 52px;
 }
 
 .leaflet-touch .leaflet-bar, .leaflet-touch .leaflet-control-layers{

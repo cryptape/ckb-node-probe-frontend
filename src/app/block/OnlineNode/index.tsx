@@ -7,7 +7,7 @@ const OnlineNode: React.FC<OnlineNodeProps> = ({ nodes }) => {
   return (
     <div className={styles.onlineNode}>
       <h1>{nodes}</h1>
-      <p>Detected online node</p>
+      <p>nodes</p>
     </div>
   )
 }
