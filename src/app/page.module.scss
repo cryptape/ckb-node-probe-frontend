@@ -21,4 +21,26 @@
   }
 }
 
-.footer{}
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  margin-top: 20px;
+  background-color: #26282F;
+
+  svg{
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  a{
+    color: #00AEFC;
+    text-decoration: none;
+
+    &:hover,
+    &:active{
+      text-decoration: underline;
+    }
+  }
+}

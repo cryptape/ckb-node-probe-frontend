@@ -1,9 +1,7 @@
 "use client";
 import { Data } from '@/interface/page';
-import { Chart } from '@antv/g2';
 import { useEffect } from 'react';
-import { isMobileDevice } from '@/app/utils/index';
-import { Renderer as GRenderer } from '@antv/g-svg';
+import * as echarts from 'echarts';
 import styles from './index.module.scss';
 
 interface CountryProps {
@@ -27,106 +25,90 @@ const Country: React.FC<CountryProps> = ({ data }) => {
 
   useEffect(() => {
     const container = 'countryGraph';
-    if (!document.getElementById(container)) return;
+    const target = document.getElementById(container);
+    if (!target) return;
 
     let graphData = Object.keys(countryCount).sort((a, b) => countryCount[b] - countryCount[a]).map((key, index) => {
       return { 
-        version: key.split('(')[0], 
+        name: key, 
         value: countryCount[key],
       };
-    });
+    }).slice(0, 10);
 
-    const chart = new Chart({
-      container,
-      theme: 'classic',
-      autoFit: true,
-      paddingLeft: 80,
-      renderer: new GRenderer()
-    });
-
-    chart.coordinate({ transform: [{ type: 'transpose' }] });
-    graphData = graphData.slice(0, 10);
-
-    chart
-      .interval()
-      .data(graphData)
-      .encode('x', 'version')
-      .encode('y', 'value')
-      .encode('color', 'value')
-      .style('fill', (target: { color: string }, index: number) => index < 3 ? '#6CE37C' : '#00AEFC')
-      .label({
-        text: 'value',
-        style: {
-          fill: '#fff',
-          transform: 'translate(-5, 0)',
-        }
-      })
-      .encode('size', isMobileDevice() ? 14 : 24)
-      .axis('x', {
-        title: false,
-        labelFormatter: (datum: string) => {
-          const { document } = chart.getContext().canvas!;
-
-          const group = document.createElement('g', {});
-          const icon = document.createElement('image', {
-            style: {
-              src: `/flags/1x1/${datum.toLowerCase()}.svg`,
-              x: -25,
-              y: 0,
-              width: 20,
-              height: 20,
-              anchor: '0.5 0.5',
-            },
-          });
-
-          const label = document.createElement('text', {
-            style: {
-              x: 0,
-              y: -15,
-              text: datum,
-              fill: '#fff', 
-              fontSize: 12,
-              textAlign: 'center',
-              transform: `translate(0, 25)`,
-            },
-          });
-
-          group.appendChild(icon);
-          group.appendChild(label);
-          
-          return group;
+    const myChart = echarts.init(target);
+    myChart.setOption({
+      grid: {
+        top: 10,
+        bottom: 30,
+        left: 80,
+        right: 50
+      },
+      xAxis: {
+        max: 'dataMax',
+        axisLine: {
+          show: true
         },
-        style: {
-          titleStroke: '#FFF',
-          titleFill: '#FFF',  
-          lineStroke: '#FFF',
-          lineFill: '#FFF', 
-          tickStroke: '#FFF',
-          tickFill: '#FFF',
-          labelStroke: '#FFF',
-          labelFill: '#FFF',
-          gridStroke: '#FFF',
-          gridFill: '#FFF', 
-          gridAreaFill: '#FFF',
+        splitLine: {
+          show: false
+        },
+        axisLabel: {
+          color: '#fff',
         }
-      })
-      .axis('y', {
-        title: false,
-        style: {
-          titleStroke: '#FFF',
-          titleFill: '#FFF',  
-          lineStroke: '#FFF',
-          lineFill: '#FFF', 
-          tickStroke: '#FFF',
-          tickFill: '#FFF',
-          labelStroke: '#FFF',
-          labelFill: '#FFF',
-          gridStroke: '#FFF',
-        }
-      })
-      .legend(false);
+      },
+      dataset: {
+        source: graphData
+      },
+      yAxis: {
+        type: 'category',
+        inverse: true,
+        data: graphData.map(item => item.name),
+        axisLabel: {
+          show: true,
+          fontSize: 14,
+          align: 'left',
+          margin: 60,
+          color: '#fff',
+          formatter: (value: string) => '{' + value + '| } {value|' + value + '}',
+          rich: {
+            value: {
+              fontSize: 14,
+              padding: 5
+            },
+            ...graphData.reduce((result: any, next: { name: string }) => {
+              result[next.name] = {
+                width: 20,
+                height: 20,
+                align: 'left',
+                backgroundColor: {
+                  image: `/flags/1x1/${next.name.toLowerCase()}.svg`
+                }
+              }
 
-    chart.render();
+              return result; 
+            }, {} as {[key: string]: string})
+          }
+        }
+      },
+      series: [
+        {
+          realtimeSort: true,
+          seriesLayoutBy: 'column',
+          type: 'bar',
+          itemStyle: {
+            color: ({ dataIndex }: { dataIndex: number }) => dataIndex < 3 ? '#6CE37C' : '#00AEFC',
+          },
+          barWidth: 14,
+          data: graphData,
+          label: {
+            show: true,
+            precision: 1,
+            position: 'right',
+            valueAnimation: true,
+            fontFamily: 'monospace'
+          }
+        }
+      ],
+    });
   }, [data]);
 
   return (

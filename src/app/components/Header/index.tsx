@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
-import { Drawer, Dropdown, Space } from 'antd';
-import { CloseOutlined, DownOutlined, MenuOutlined } from '@ant-design/icons';
+import { Drawer, Dropdown, Popover, Space } from 'antd';
+import { CloseOutlined, DownOutlined, MenuOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import Image from 'next/image';
 import Icon from './icon.png';
 import styles from './index.module.scss';
@@ -31,7 +31,14 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
       <div className={`ckb-container ${styles.container}`}>
         <div className={styles.logo}>
           <Image src={Icon} alt='LOGO' />
-          <span>CKB Full Nodes</span>
+          <span className={styles.title}>CKB Full Nodes</span>
+          <Popover placement="bottomLeft" content={<>
+            <strong>What is a full node?</strong>
+            <br />
+            <a href="https://docs.nervos.org/">docs.nervos.org</a>
+          </>}>
+            <QuestionCircleOutlined />
+          </Popover>
         </div>
         <div className={styles.right}>
           <div className={styles.menu}>

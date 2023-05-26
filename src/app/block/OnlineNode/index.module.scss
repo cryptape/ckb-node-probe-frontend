@@ -11,4 +11,20 @@
   h1,p{
     margin: 0;
   }
+
+  p{
+    font-weight: 500;
+    color: #045647;
+
+    span{
+      vertical-align: bottom;
+    }
+  }
+
+  svg{
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+    fill: #045647;
+  }
 }

@@ -12,7 +12,7 @@ export function renderMapGraph(data: Data[]) {
 
   if (_window._map) map = _window._map;
   else {
-    map = L.map(container).setView([0, 0], 2);
+    map = L.map(container).setView([0, 0], isMobileDevice() ? 1 : 2);
     _window._map = map;
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png').addTo(map);
   }
@@ -33,7 +33,7 @@ export function renderMapGraph(data: Data[]) {
   data.forEach(({ latitude, longitude }) => {
     if (latitude === null && longitude === null) return;
     heatMapData.push([latitude, longitude, 5000]);
-  })
+  });
 
   L.heatLayer(heatMapData, { radius: 15 }).addTo(map);
   

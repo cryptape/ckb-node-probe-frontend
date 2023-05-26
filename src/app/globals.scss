@@ -1,8 +1,11 @@
+*{
+  font-family: "Montserrat", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
 body {
-  background-color: #131417;
   padding: 0;
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  background-color: #131417;
 }
 
 .ckb-container{
@@ -48,6 +51,16 @@ body {
 .ant-message{
   z-index: 10002 !important;
 }
+
+.ant-popover{
+  z-index: 10002 !important;
+}
+
+.anticon svg{
+  fill: #6CE37C;
+}
+
+// leaflet style reset
 
 .leaflet-control-attribution{
   display: none;
@@ -142,4 +155,8 @@ body {
 }
 .marker-cluster span {
 	line-height: 30px;
+}
+
+.leaflet-container{
+  background-color: #131417 !important;
 }
