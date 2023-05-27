@@ -1,9 +1,10 @@
 "use client";
 import { Data } from '@/interface/page';
 import { useEffect } from 'react';
+import { isMobileDevice } from '@/app/utils';
+
 import * as echarts from 'echarts';
 import styles from './index.module.scss';
-import { isMobileDevice } from '@/app/utils';
 
 interface VersionProps {
   data: Data[]
@@ -45,6 +46,9 @@ const Version: React.FC<VersionProps> = ({ data }) => {
           type: 'pie',
           radius: isMobileDevice() ? '50%' : '70%',
           data: graphData,
+          label: {
+            color: '#FFF'
+          },
           emphasis: {
             itemStyle: {
               shadowBlur: 10,

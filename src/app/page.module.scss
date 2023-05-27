@@ -23,15 +23,40 @@
 
 .footer{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 56px;
+  min-height: 56px;
   margin-top: 20px;
   background-color: #26282F;
+
+  @include for-mobile {
+    padding: 10px;
+    text-align: center;
+  }
+
+  p{
+    margin: 0;
+    font-size: 12px;
+    span{
+      color: white;
+
+      & + a{
+        margin-left: 5px;
+      }
+    }
+
+    &:last-child{
+      margin-top: 5px;
+    }
+  }
+
 
   svg{
     vertical-align: middle;
     margin-right: 10px;
+    width: 15px;
+    height: 15px;
   }
 
   a{

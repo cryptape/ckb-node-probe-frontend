@@ -100,11 +100,12 @@ const Country: React.FC<CountryProps> = ({ data }) => {
           barWidth: 14,
           data: graphData,
           label: {
+            color: '#FFF',
             show: true,
             precision: 1,
             position: 'right',
             valueAnimation: true,
-            fontFamily: 'monospace'
+            fontFamily: 'monospace',
           }
         }
       ],
