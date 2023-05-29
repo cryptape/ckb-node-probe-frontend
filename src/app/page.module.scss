@@ -26,14 +26,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 56px;
+  height: 56px;
   margin-top: 20px;
   background-color: #26282F;
-
-  @include for-mobile {
-    padding: 10px;
-    text-align: center;
-  }
 
   p{
     margin: 0;
