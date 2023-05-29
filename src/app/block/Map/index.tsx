@@ -34,7 +34,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
             <img src="/people.svg" alt="people" />
             <div className={styles.content}>
               { tips.text }
-              <span> —— &quot;Satoshi Nakamoto&quot;, { tips.medium }, { tips.date }</span>
+              <span> —— Satoshi Nakamoto, { tips.medium }, { tips.date }</span>
             </div>
           </p>
         )
