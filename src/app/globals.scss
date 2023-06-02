@@ -1,5 +1,10 @@
+@font-face {
+  font-family: 'Cascadia Mono';
+  src: url("/woff2/CascadiaMono.woff2") format('woff2');
+}
+
 *{
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-family: 'Cascadia Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 }
 
 body {
