@@ -63,6 +63,9 @@
           display: none;
         }
       }
+      :hover {
+        cursor: pointer;
+      }
       .mobile{
         display: none;
         @include for-mobile {
