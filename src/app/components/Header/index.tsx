@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
               <div className={popoverStyles.markdownHLine}></div>
               <div className={popoverStyles.markdownContentContainer}>
                 <div className={popoverStyles.tipsHeader}>
-                  <Image alt="explain-icon" src="./explain.png"/>
+                  <img alt="explain-icon" src="./explain.png"/>
                   Types of CKB Nodes
                 </div>
                 <div className={popoverStyles.markdownText}>
