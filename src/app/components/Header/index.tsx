@@ -1,15 +1,18 @@
 "use client";
 import { useState } from 'react';
-import { Drawer, Dropdown, Popover, Space } from 'antd';
+import {Drawer, Dropdown, Popover, Space, Typography} from 'antd';
 import { CloseOutlined, DownOutlined, MenuOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 import Image from 'next/image';
 import Icon from './icon.png';
 import styles from './index.module.scss';
+import popoverStyles from '../../../styles/popover.module.scss'
 
 interface HeaderProps {
   type: string;
   setType: (type: string) => void;
 }
+
+const { Link } = Typography
 
 const Header: React.FC<HeaderProps> = ({ type, setType }) => {
   const [open, setOpen] = useState(false);
@@ -33,9 +36,29 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
           <Image src={Icon} alt='LOGO' />
           <span className={styles.title}>CKB Full Nodes</span>
           <Popover placement="bottomLeft" content={<>
-            <strong>What is a full node?</strong>
+            <div className={popoverStyles.strongTitle}>A Full Node stores and validates the entire blockchain.</div>
             <br />
-            <a href="https://docs.nervos.org/">docs.nervos.org</a>
+            <div className={`${popoverStyles.markdownWrapper} ${popoverStyles.tips}`}>
+              <div className={popoverStyles.markdownHLine}></div>
+              <div className={popoverStyles.markdownContentContainer}>
+                <div className={popoverStyles.tipsHeader}>
+                  <img src='./explain.png' />
+                  Types of CKB Nodes
+                </div>
+                <div className={popoverStyles.markdownText}>
+                  <div className={popoverStyles.textItem}>
+                    <span>Full nodes</span> download and verify every block and transaction, checking them against CKB's consensus rules while hosting an entire copy of the blockchain.
+                  </div>
+                  <div className={popoverStyles.textItem}>
+                    <span>Light nodes</span> download only the blockchain headers, utilizing fewer resources and relying on other nodes for transaction data when needed.
+                  </div>
+                  <div className={popoverStyles.textItem}>
+                    <span>Mining nodes</span> create and propose new blocks to the network, actively contributing to the network's security and consensus.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <Link href="https://docs.nervos.org/docs/basics/glossary/#full-node" target="_blank">[Learn more](link to glossary)</Link>
           </>}>
             <QuestionCircleOutlined />
           </Popover>
