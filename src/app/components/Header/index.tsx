@@ -42,18 +42,18 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
               <div className={popoverStyles.markdownHLine}></div>
               <div className={popoverStyles.markdownContentContainer}>
                 <div className={popoverStyles.tipsHeader}>
-                  <img src='./explain.png' />
+                  <Image alt="explain-icon" src="./explain.png"/>
                   Types of CKB Nodes
                 </div>
                 <div className={popoverStyles.markdownText}>
                   <div className={popoverStyles.textItem}>
-                    <span>Full nodes</span> download and verify every block and transaction, checking them against CKB's consensus rules while hosting an entire copy of the blockchain.
+                    <span>Full nodes</span> download and verify every block and transaction, checking them against CKB&apos;s consensus rules while hosting an entire copy of the blockchain.
                   </div>
                   <div className={popoverStyles.textItem}>
                     <span>Light nodes</span> download only the blockchain headers, utilizing fewer resources and relying on other nodes for transaction data when needed.
                   </div>
                   <div className={popoverStyles.textItem}>
-                    <span>Mining nodes</span> create and propose new blocks to the network, actively contributing to the network's security and consensus.
+                    <span>Mining nodes</span> create and propose new blocks to the network, actively contributing to the network&apos;s security and consensus.
                   </div>
                 </div>
               </div>

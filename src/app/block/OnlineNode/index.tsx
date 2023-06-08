@@ -1,5 +1,6 @@
 import {Popover, Typography} from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
+import Image from 'next/image';
 import styles from './index.module.scss';
 import popoverStyles from "@/styles/popover.module.scss";
 interface OnlineNodeProps {
@@ -19,7 +20,7 @@ const OnlineNode: React.FC<OnlineNodeProps> = ({ nodes }) => {
                   <div className={popoverStyles.markdownHLine}></div>
                   <div className={popoverStyles.markdownContentContainer}>
                       <div className={popoverStyles.tipsHeader}>
-                          <img src='./explain.png' />
+                          <Image src="./explain.png" alt="explain-icon"/>
                           Network Probing for Full Node Statistics
                       </div>
                       <div className={popoverStyles.markdownText}>
