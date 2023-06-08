@@ -11,11 +11,13 @@ interface MapProps {
 
 const Map: React.FC<MapProps> = ({ data }) => {
   const [text, setText] = useState<string>();
+  const [avatarImg, setAvatarImg] = useState<string>()
 
   useEffect(() => {
     renderMapGraph(data);
     const index = Math.floor(Math.random() * quotes.length);
     setText(quotes[index]);
+    setAvatarImg(`./${Math.ceil(Math.random() * 4)}.png`)
   }, [data]);
 
   return (
@@ -24,7 +26,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
       {
         text && (
           <p className={styles.tips}>
-            <img src="/people.svg" alt="people" />
+            <img src={avatarImg} alt="people" />
             <div className={styles.content}>
               { text }
               <span> — CKB Whitepaper, 2018</span>
