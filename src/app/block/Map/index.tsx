@@ -5,9 +5,12 @@ import { useEffect, useState } from "react";
 
 import quotes from './quotes.json';
 import styles from './index.module.scss';
+import {Typography} from "antd";
 interface MapProps {
   data: Data[]
 }
+
+const { Link } = Typography
 
 const Map: React.FC<MapProps> = ({ data }) => {
   const [text, setText] = useState<string>();
@@ -29,7 +32,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
             <img src={avatarImg} alt="people" />
             <div className={styles.content}>
               { text }
-              <span> — CKB Whitepaper, 2018</span>
+              <span> — <Link href="https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0002-ckb/0002-ckb.md" target="_blank">CKB Whitepaper</Link>, 2018</span>
             </div>
           </p>
         )
