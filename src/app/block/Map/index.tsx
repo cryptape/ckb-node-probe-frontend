@@ -32,7 +32,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
             <img src={avatarImg} alt="people" />
             <div className={styles.content}>
               { text }
-              <span> — <Link href="https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0002-ckb/0002-ckb.md" target="_blank">CKB Whitepaper, 2018</Link>, 2018</span>
+              <span> — <Link href="https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0002-ckb/0002-ckb.md" target="_blank">CKB Whitepaper, 2018</Link></span>
             </div>
           </p>
         )
