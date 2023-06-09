@@ -13,7 +13,7 @@ const OnlineNode: React.FC<OnlineNodeProps> = ({ nodes }) => {
     <div className={styles.onlineNode}>
       <h1>{nodes}</h1>
       <p>
-        Nodes
+        CKB Nodes Online
           <Popover placement="bottom" content={<>
               <div className={`${popoverStyles.markdownWrapper} ${popoverStyles.tips}`}>
                   <div className={popoverStyles.markdownHLine}></div>
@@ -35,7 +35,7 @@ const OnlineNode: React.FC<OnlineNodeProps> = ({ nodes }) => {
                       </div>
                   </div>
               </div>
-              <Link href="https://blog.cryptape.com/peer-discovery-in-nervos-network" target="_blank">[Learn more](link to blog post)</Link>
+              <Link href="https://blog.cryptape.com/peer-discovery-in-nervos-network" target="_blank">[Learn more]</Link>
           </>}>
               <QuestionCircleOutlined />
           </Popover>

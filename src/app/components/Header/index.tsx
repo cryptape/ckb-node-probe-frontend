@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
                 </div>
               </div>
             </div>
-            <Link href="https://docs.nervos.org/docs/basics/glossary/#full-node" target="_blank">[Learn more](link to glossary)</Link>
+            <Link href="https://docs.nervos.org/docs/basics/glossary/#full-node" target="_blank">[Learn more]</Link>
           </>}>
             <QuestionCircleOutlined />
           </Popover>
