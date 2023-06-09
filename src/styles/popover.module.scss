@@ -1,0 +1,54 @@
+.strongTitle {
+    margin: 0 0 -22px 0;
+    font-size: 16px;
+}
+
+.markdownWrapper {
+    width: 570px;
+    display: flex;
+    margin: 10px 0;
+    border-radius: 4px;
+    overflow: hidden;
+
+.markdownHLine {
+    width: 4px;
+}
+
+.markdownContentContainer {
+    color: #000;
+    .markdownText {
+        font-size: 12px;
+        font-weight: 300;
+        padding-left: 15px;
+        span {
+            font-weight: 400;
+        }
+        .textItem {
+            margin-bottom: 10px;
+            a {
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+&.tips {
+     background-color: #F0FAF3;
+
+    .markdownHLine {
+        background-color: #A3D8BE;
+    }
+}
+
+.tipsHeader {
+    display: flex;
+    align-items: center;
+    margin: 10px 8px 16px 10px;
+    font-size: 16px;
+        img {
+            width: 24px;
+            height: 24px;
+            margin-right: 7px;
+        }
+    }
+}

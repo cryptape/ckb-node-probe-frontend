@@ -1,4 +1,21 @@
+@font-face {
+  font-family: 'Cascadia Mono';
+  src: url("/woff2/CascadiaMono.woff2") format('woff2');
+}
+
+*{
+  font-family: 'Cascadia Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+a {
+  font-family: 'Cascadia Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif !important;
+  color: #00A7F1 !important;
+}
+
+
 body {
+  padding: 0;
+  margin: 0;
   background-color: #131417;
 }
 
@@ -42,6 +59,20 @@ body {
   color: white !important;
 }
 
+.ant-message{
+  z-index: 10002 !important;
+}
+
+.ant-popover{
+  z-index: 10002 !important;
+}
+
+.anticon svg{
+  fill: #6CE37C;
+}
+
+// leaflet style reset
+
 .leaflet-control-attribution{
   display: none;
 }
@@ -67,6 +98,27 @@ body {
 
 .fullscreen-icon{
   background-image: url('/fullscreen.svg') !important;
+}
+
+.move-control{
+  span{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #26282F;
+    background-size: 60%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+.lock-icon{
+  background-image: url('/lock.svg') !important;
+}
+
+.unlock-icon{
+  background-image: url('/unlock.svg') !important;
+  background-size: 26px 52px;
 }
 
 .leaflet-touch .leaflet-bar, .leaflet-touch .leaflet-control-layers{
@@ -114,4 +166,8 @@ body {
 }
 .marker-cluster span {
 	line-height: 30px;
+}
+
+.leaflet-container{
+  background-color: #131417 !important;
 }

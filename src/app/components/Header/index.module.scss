@@ -1,5 +1,9 @@
 .header{
   background-color: #26282F;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+
   @include for-pad {
     padding: 0 20px;
   }
@@ -13,7 +17,6 @@
     justify-content: space-between;
     align-items: center;
     height: 56px;
-  
     span,a{
       color: #FFF;
     }
@@ -30,16 +33,26 @@
         }
       }
 
-      span{
+      .title {
         font-size: 24px;
         line-height: 36px;
         margin-left: 20px;
         vertical-align: middle;
+        font-weight: 600;
 
         @include for-mobile {
           font-size: 20px;
           line-height: 32px;
         }
+      }
+
+      svg{
+        fill: #5C6F84;
+        width: 18px;
+        height: 18px;
+        vertical-align: middle;
+        margin-left: 10px;
+        cursor: pointer;
       }
     }
 
@@ -49,6 +62,9 @@
           display: none;
         }
       }
+      :hover {
+        cursor: pointer;
+      }
       .mobile{
         display: none;
         @include for-mobile {
@@ -56,6 +72,7 @@
         }
       }
     }
+
   }
 }
 
