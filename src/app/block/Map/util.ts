@@ -12,7 +12,9 @@ export function renderMapGraph(data: Data[]) {
 
   if (_window._map) map = _window._map;
   else {
-    map = L.map(container).setView([0, 0], isMobileDevice() ? 1 : 2);
+    map = L.map(container, {
+      maxBounds: [[-90, -180], [90, 180]]
+    }).setView([0, 0], isMobileDevice() ? 1 : 2);
     _window._map = map;
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
       minZoom: 2
