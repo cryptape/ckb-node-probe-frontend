@@ -1,8 +1,11 @@
 .strongTitle {
     margin: 0 0 -22px 0;
     font-size: 16px;
+    color: #ffffff;
 }
-
+.popoverWrapper {
+    background-color: #2D3039;
+}
 .markdownWrapper {
     width: 570px;
     display: flex;
@@ -11,16 +14,19 @@
     overflow: hidden;
 
 .markdownHLine {
-    width: 4px;
+    width: 8px;
 }
 
 .markdownContentContainer {
-    color: #000;
+    color: #ffffff;
+    background-color: #23262F;
     .markdownText {
         font-size: 12px;
         font-weight: 300;
         padding-left: 15px;
+        color: #ffffff;
         span {
+            color: #6CE37C;
             font-weight: 400;
         }
         .textItem {
@@ -33,10 +39,8 @@
 }
 
 &.tips {
-     background-color: #F0FAF3;
-
     .markdownHLine {
-        background-color: #A3D8BE;
+        background-color: #3F4452;
     }
 }
 
