@@ -9,12 +9,14 @@
 }
 
 .group {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  overflow: hidden;
 
   .chartWrapper {
-    flex-basis: 49%;
+    flex-basis: calc(50% - 5px);
 
     @include for-pad {
       flex-basis: 100%;

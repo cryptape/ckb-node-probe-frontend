@@ -1,6 +1,6 @@
 "use client";
 import { Data } from '@/interface/page';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import styles from './index.module.scss';
 
@@ -23,10 +23,10 @@ const Country: React.FC<CountryProps> = ({ data }) => {
     }
   });
 
+  const chartRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    const container = 'countryGraph';
-    const target = document.getElementById(container);
-    if (!target) return;
+    if (!chartRef.current) return
 
     let graphData = Object.keys(countryCount).sort((a, b) => countryCount[b] - countryCount[a]).map((key, index) => {
       return { 
@@ -35,7 +35,12 @@ const Country: React.FC<CountryProps> = ({ data }) => {
       };
     }).slice(0, 10);
 
-    const myChart = echarts.init(target);
+    const myChart = echarts.init(chartRef.current);
+    const resizeHandler = () => {
+      myChart.resize();
+    };
+
+    window.addEventListener('resize', resizeHandler);
     myChart.setOption({
       grid: {
         top: 10,
@@ -110,12 +115,18 @@ const Country: React.FC<CountryProps> = ({ data }) => {
         }
       ],
     });
+
+    return () => {
+      window.removeEventListener('resize', resizeHandler);
+      myChart.dispose();
+    }
+
   }, [data]);
 
   return (
     <div className={styles.country}>
       <div className="ckb-header-bar">Count by country</div>
-      <div id='countryGraph' className={styles.countryGraph}></div>
+      <div ref={chartRef} id='countryGraph' className={styles.countryGraph}></div>
       <div className="ckb-footer-label"># of nodes</div>
     </div>
   )

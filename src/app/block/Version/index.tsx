@@ -1,6 +1,6 @@
 "use client";
 import { Data } from '@/interface/page';
-import { useEffect } from 'react';
+import {useEffect, useRef} from 'react';
 import { isMobileDevice } from '@/app/utils';
 
 import * as echarts from 'echarts';
@@ -24,10 +24,12 @@ const Version: React.FC<VersionProps> = ({ data }) => {
     else versionCount[version_short] = 1;
   });
 
+  const chartRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     const container = 'versionGraph';
     const target = document.getElementById(container);
-    if (!target) return;
+    if (!chartRef.current) return
 
     let graphData = Object.keys(versionCount).map((key, index) => ({ 
       name: key, 
@@ -35,7 +37,13 @@ const Version: React.FC<VersionProps> = ({ data }) => {
     }))
     .sort((pre, next) => next.value - pre.value);
 
-    const myChart = echarts.init(target);
+    const myChart = echarts.init(chartRef.current);
+    const resizeHandler = () => {
+      myChart.resize();
+    };
+
+    window.addEventListener('resize', resizeHandler);
+
     myChart.setOption({
       tooltip: {
         trigger: 'item'
@@ -59,12 +67,17 @@ const Version: React.FC<VersionProps> = ({ data }) => {
         }
       ]
     });
+
+    return () => {
+      window.removeEventListener('resize', resizeHandler);
+      myChart.dispose();
+    }
   }, [data])
   
   return (
     <div className={styles.version}>
       <div className="ckb-header-bar">Count by version</div>
-      <div id='versionGraph' className={styles.versionGraph}></div>
+      <div ref={chartRef} id='versionGraph' className={styles.versionGraph}></div>
       <div className="ckb-footer-label"># of nodes</div>
     </div>
   )

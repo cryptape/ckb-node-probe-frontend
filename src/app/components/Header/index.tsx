@@ -20,12 +20,18 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
     {
       label: 'Mirana (CKB Mainnet)',
       key: 'mirana',
-      onClick: () => setType('mirana')
+      onClick: () => {
+        setType('mirana')
+        setOpen(false)
+      }
     },
     {
       label: 'Pudge (CKB Testnet)',
       key: 'pudge',
-      onClick: () => setType('pudge')
+      onClick: () => {
+        setType('pudge')
+        setOpen(false)
+      }
     }
   ]
 
