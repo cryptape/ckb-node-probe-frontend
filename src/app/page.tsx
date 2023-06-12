@@ -29,8 +29,12 @@ export default function Home() {
       <OnlineNode nodes={data.length} />
       <Map data={data} />
       <div className={styles.group}>
-        <Country data={data} />
-        <Version data={data} />
+        <div className={styles.chartWrapper}>
+          <Country data={data} />
+        </div>
+        <div className={styles.chartWrapper}>
+          <Version data={data} />
+        </div>
       </div>
     </main>
     <footer className={styles.footer}>

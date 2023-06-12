@@ -8,18 +8,24 @@
   }
 }
 
-.group{
+.group {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 
-  @include for-pad {
-    flex-direction: column;
-  }
+  .chartWrapper {
+    flex-basis: 45%;
 
-  @include for-mobile {
-    flex-direction: column;
+    @include for-pad {
+      flex-basis: 100%;
+    }
+
+    @include for-mobile {
+      flex-basis: 100%;
+    }
   }
 }
+
 
 .footer{
   display: flex;

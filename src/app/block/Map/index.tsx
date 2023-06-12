@@ -1,7 +1,7 @@
 "use client";
 import { Data } from "@/interface/page";
 import { renderMapGraph } from "./util";
-import { useEffect, useState } from "react";
+import {  useMemo, useEffect, useState, useCallback } from "react";
 
 import quotes from './quotes.json';
 import styles from './index.module.scss';
@@ -16,12 +16,26 @@ const Map: React.FC<MapProps> = ({ data }) => {
   const [text, setText] = useState<string>();
   const [avatarImg, setAvatarImg] = useState<string>()
 
+  const memoizedRenderMapGraph = useMemo(() => {
+    return renderMapGraph;
+  }, []);
+
+// 缓存生成文本和头像图片的函数
+  const generateText = useCallback(() => {
+    const index = Math.floor(Math.random() * quotes.length);
+    setText(quotes[index]);
+  }, []);
+
+  const generateAvatarImg = useCallback(() => {
+    setAvatarImg(`./${Math.ceil(Math.random() * 4)}.png`);
+  }, []);
+
   useEffect(() => {
     renderMapGraph(data);
     const index = Math.floor(Math.random() * quotes.length);
     setText(quotes[index]);
-    setAvatarImg(`./${Math.ceil(Math.random() * 4)}.png`)
-  }, [data]);
+    setAvatarImg(`./${Math.ceil(Math.random() * 4)}.png`);
+  }, [data, renderMapGraph, quotes, setText, setAvatarImg]);
 
   return (
     <>
