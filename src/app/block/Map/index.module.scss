@@ -4,38 +4,3 @@
   margin-bottom: 20px;
   border-radius: 16px;
 }
-
-.tips{
-  margin-bottom: 20px;
-  border-radius: 16px;
-  background-color: #2D3039;
-  padding: 10px 20px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-
-  @include for-mobile {
-    flex-direction: column;
-
-    img{
-      margin-right: 0;
-      margin-bottom: 10px;
-    }
-  }
-
-  img{
-    width: 44px;
-    height: 46px;
-    margin-right: 10px;
-  }
-  
-  .content{
-    color: white;
-    span{
-      color: #6CE37C;
-      a {
-        color: #6CE37C !important;
-      }
-    }
-  }
-}
