@@ -73,7 +73,7 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
           <div className={styles.menu}>
             <Dropdown menu={{ items }}>
               <a onClick={(e) => e.preventDefault()}>
-                <Space>{items.filter(item => item.key === type)[0].label}<DownOutlined /></Space>
+                <Space >{items.filter(item => item.key === type)[0].label}<DownOutlined /></Space>
               </a>
             </Dropdown>
           </div>
