@@ -23,6 +23,8 @@ const Country: React.FC<CountryProps> = ({ data }) => {
     }
   });
 
+  console.log(countryCount)
+
   const chartRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

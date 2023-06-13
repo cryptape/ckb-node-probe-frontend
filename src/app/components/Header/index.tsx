@@ -41,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
         <div className={styles.logo}>
           <Image src={Icon} alt='LOGO' />
           <span className={styles.title}>CKB Full Nodes</span>
-          <Popover placement="bottomLeft" content={<>
+          <Popover placement="bottom" content={<>
             <div className={popoverStyles.strongTitle}>A Full Node stores and validates the entire blockchain.</div>
             <br />
             <div className={`${popoverStyles.markdownWrapper} ${popoverStyles.tips}`}>
