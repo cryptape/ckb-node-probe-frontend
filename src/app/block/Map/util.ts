@@ -8,10 +8,16 @@ export function renderMapGraph(data: Data[]) {
 
   if (!document.getElementById(container)) return;
   const disableScroll = () => {
-    body.style.overflow = "hidden"; // 禁止滚动
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.width = "100%";
+    body.style.height = "100%";
   };
   const enableScroll = () => {
-    body.style.overflow = ""; // 允许滚动
+    body.style.overflow = "";
+    body.style.position = "";
+    body.style.width = "";
+    body.style.height = "";
   };
   let map: any;
   const _window = window as any;
