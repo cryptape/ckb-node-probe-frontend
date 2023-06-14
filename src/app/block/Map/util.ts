@@ -73,7 +73,7 @@ export function renderMapGraph(data: Data[]) {
       const unLockIcon = 'unlock-icon';
       const container = L.DomUtil.create('div', 'move-control');
 
-      container.innerHTML = `<span class="${lockIcon}"></span>`;
+      container.innerHTML = `<span class="${unLockIcon}"></span>`;
       container.style.cursor = 'pointer';
 
       L.DomEvent.on(container, 'touchstart', (event: Event) => {
