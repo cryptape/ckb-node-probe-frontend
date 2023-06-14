@@ -10,8 +10,8 @@ export function renderMapGraph(data: Data[]) {
   const disableScroll = () => {
     body.style.overflow = "hidden";
     body.style.position = "fixed";
-    body.style.width = "100%";
-    body.style.height = "100%";
+    body.style.width = "100vw";
+    body.style.height = "100vh";
   };
   const enableScroll = () => {
     body.style.overflow = "";
