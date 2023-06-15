@@ -23,17 +23,35 @@ const Country: React.FC<CountryProps> = ({ data }) => {
     }
   });
 
+  const total: number = Object.values(countryCount).reduce((sum, value) => sum + value, 0);
+
+  const filteredData: CountryCount = Object.entries(countryCount)
+      .filter(([key, value]) => (value / total) >= 0.01)
+      .reduce((obj, [key, value]) => {
+        obj[key] = value;
+        return obj;
+      }, {} as CountryCount);
+
+  const othersValue: number = Object.values(countryCount)
+      .filter(value => (value / total) < 0.01)
+      .reduce((sum, value) => sum + value, 0);
+
+  if (othersValue > 0) {
+    filteredData['others'] = othersValue;
+  }
   const chartRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!chartRef.current) return
 
-    let graphData = Object.keys(countryCount).sort((a, b) => countryCount[b] - countryCount[a]).map((key, index) => {
-      return { 
-        name: key, 
-        value: countryCount[key],
+    let graphData = Object.keys(filteredData).sort((a, b) => filteredData[b] - filteredData[a]).map((key, index) => {
+      return {
+        name: key,
+        value: filteredData[key],
       };
-    }).slice(0, 10);
+    });
+
+    console.log(graphData)
 
     const myChart = echarts.init(chartRef.current);
     const resizeHandler = () => {
