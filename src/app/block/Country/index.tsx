@@ -15,7 +15,13 @@ interface CountryCount {
 const Country: React.FC<CountryProps> = ({ data }) => {
   const countryCount: CountryCount = {};
 
-  data.forEach(({ country }) => {
+  data.forEach(({ country, version_short }) => {
+    const lowerCaseVersion = version_short.toLowerCase();
+
+    if (lowerCaseVersion === "unknown") {
+      return; // 如果 version_short 是 "Unknown"，则跳过该次循环
+    }
+
     if (country in countryCount) {
       countryCount[country]++;
     } else {

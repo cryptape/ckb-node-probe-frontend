@@ -8,16 +8,38 @@ import className from 'classnames';
 import OnlineNode from './block/OnlineNode';
 import styles from './page.module.scss';
 
+interface PeerData {
+  city: string;
+  country: string;
+  id: number;
+  last_seen: {
+    secs_since_epoch: number;
+    nanos_since_epoch: number;
+  };
+  latitude: number;
+  longitude: number;
+  node_type: number;
+  version: string;
+  version_short: string;
+}
+
+
 export default function Home() {
   const [type, setType] = useState('mirana');
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([] as PeerData[]);
 
   useEffect(() => {
     async function load() {
       const url = location.hostname === 'localhost' ? 'nodes-dev.ckbapp.dev' : location.hostname;
       const loadData = await fetch(`//api-${url}/peer?network=${type}`);
-      const result = await loadData.json();
-      setData(result);
+      const result: PeerData[] = await loadData.json();
+
+      const filteredData = result.filter((item) => {
+        const lowerCaseKey = item.version_short.toLowerCase();
+        return lowerCaseKey !== 'unknown';
+      });
+
+      setData(filteredData);
     }
 
     load();
