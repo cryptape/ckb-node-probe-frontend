@@ -2,7 +2,8 @@
 
 This is a front-end project aimed at visualizing the changes in the CKB network across different regions and versions.
 
-![image](https://github.com/cryptape/ckb-node-probe-frontend/assets/11926244/983e40d8-4771-4140-b157-a7954675fc6a)
+![image](https://github.com/cryptape/ckb-node-probe-frontend/assets/11926244/44efd5fc-b936-4894-a011-ac2909c3b1dd)
+
 
 
 ## Purpose
