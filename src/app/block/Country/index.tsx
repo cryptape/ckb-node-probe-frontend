@@ -64,6 +64,10 @@ const Country: React.FC<CountryProps> = ({ data }) => {
 
     window.addEventListener('resize', resizeHandler);
     myChart.setOption({
+      tooltip: {
+        trigger: 'item',
+        formatter: '{b}: {d}%'
+      },
       grid: {
         top: 10,
         bottom: 30,
@@ -73,6 +77,7 @@ const Country: React.FC<CountryProps> = ({ data }) => {
       series: [
         {
           type: 'pie', // 修改为饼图类型
+          name: 'Country/region',
           radius: '50%', // 设置饼图半径大小
           center: ['50%', '50%'], // 设置饼图中心位置
           itemStyle: {},
