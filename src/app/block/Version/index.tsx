@@ -17,8 +17,8 @@ interface VersionCount {
 const Version: React.FC<VersionProps> = ({ data }) => {
   const versionCount: VersionCount = {};
 
-  data.forEach(({ version_short }) => {
-    if (version_short.toLocaleLowerCase() === 'unknown') return;
+  data.forEach(({ version_short, version }) => {
+    if (version == '') return;
 
     if (version_short in versionCount) versionCount[version_short]++;
     else versionCount[version_short] = 1;

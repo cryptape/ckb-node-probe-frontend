@@ -18,10 +18,9 @@ export default function Home() {
       const url = location.hostname === 'localhost' ? 'nodes-dev.ckbapp.dev' : location.hostname;
       const loadData = await fetch(`//api-${url}/peer?network=${type}`);
       const result: Data[] = await loadData.json();
-      console.log(result)
       const filteredData = result.filter((item) => {
-        const lowerCaseKey = item.version_short.toLowerCase();
-        return lowerCaseKey !== 'unknown';
+        const version = item.version
+        return version != '';
       });
       setData(filteredData)
     }

@@ -3,6 +3,7 @@ import { Data } from '@/interface/page';
 import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import styles from './index.module.scss';
+import {isMobileDevice} from "@/app/utils";
 
 interface CountryProps {
   data: Data[]
@@ -15,11 +16,10 @@ interface CountryCount {
 const Country: React.FC<CountryProps> = ({ data }) => {
   const countryCount: CountryCount = {};
 
-  data.forEach(({ country, version_short }) => {
-    const lowerCaseVersion = version_short.toLowerCase();
+  data.forEach(({ country, version }) => {
 
-    if (lowerCaseVersion === "unknown") {
-      return; // 如果 version_short 是 "Unknown"，则跳过该次循环
+    if (version == '') {
+      return;
     }
 
     if (country in countryCount) {
@@ -65,39 +65,26 @@ const Country: React.FC<CountryProps> = ({ data }) => {
     window.addEventListener('resize', resizeHandler);
     myChart.setOption({
       tooltip: {
-        trigger: 'item',
-        formatter: '{b}: {d}%'
-      },
-      grid: {
-        top: 10,
-        bottom: 30,
-        left: 80,
-        right: 50
+        trigger: 'item'
       },
       series: [
         {
-          type: 'pie', // 修改为饼图类型
-          name: 'Country/region',
-          radius: '50%', // 设置饼图半径大小
-          center: ['50%', '50%'], // 设置饼图中心位置
-          itemStyle: {},
+          name: 'Country/Region',
+          type: 'pie',
+          radius: isMobileDevice() ? '50%' : '70%',
+          data: graphData,
           label: {
-            color: '#FFF',
-            show: true,
-            precision: 1,
-            formatter: '{b}', // 设置标签显示的内容
-            fontFamily: 'monospace',
+            color: '#FFF'
           },
           emphasis: {
-            label: {
-              show: true,
-              fontSize: 16,
-              fontWeight: 'bold',
-            },
-          },
-          data: graphData,
-        },
-      ],
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }
+      ]
     });
     return () => {
       window.removeEventListener('resize', resizeHandler);
