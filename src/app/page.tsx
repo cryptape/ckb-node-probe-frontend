@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
+import { Data } from '@/interface/page';
 import Map from './block/Map';
 import Header from './components/Header';
 import Version from './block/Version';
@@ -8,39 +9,21 @@ import className from 'classnames';
 import OnlineNode from './block/OnlineNode';
 import styles from './page.module.scss';
 
-interface PeerData {
-  city: string;
-  country: string;
-  id: number;
-  last_seen: {
-    secs_since_epoch: number;
-    nanos_since_epoch: number;
-  };
-  latitude: number;
-  longitude: number;
-  node_type: number;
-  version: string;
-  version_short: string;
-}
-
-
 export default function Home() {
   const [type, setType] = useState('mirana');
-  const [data, setData] = useState([]);
-  const [versionedData, setVersionedData] = useState([] as PeerData[])
+  const [data, setData] = useState([] as Data[]);
 
   useEffect(() => {
     async function load() {
       const url = location.hostname === 'localhost' ? 'nodes-dev.ckbapp.dev' : location.hostname;
       const loadData = await fetch(`//api-${url}/peer?network=${type}`);
-      const result: PeerData[] = await loadData.json();
+      const result: Data[] = await loadData.json();
 
       const filteredData = result.filter((item) => {
         const lowerCaseKey = item.version_short.toLowerCase();
         return lowerCaseKey !== 'unknown';
       });
-      setData(result)
-      setVersionedData(filteredData);
+      setData(filteredData)
     }
 
     load();
@@ -49,7 +32,7 @@ export default function Home() {
   return <>
     <Header type={type} setType={setType} />
     <main className={className('ckb-container', styles.main)}>
-      <OnlineNode nodes={versionedData.length} />
+      <OnlineNode nodes={data.length} />
       <Map data={data} />
       <div className={styles.group}>
         <div className={styles.chartWrapper}>
