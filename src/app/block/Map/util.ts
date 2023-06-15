@@ -60,10 +60,8 @@ export function renderMapGraph(data: Data[]) {
     moveControl.setPosition('bottomright');
     document.addEventListener("fullscreenchange", ()=> {
       if (document.fullscreenElement) {
-        console.log('enter')
         disableScroll();
       } else {
-        console.log('leave')
         enableScroll();
       }
     })
