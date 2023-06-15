@@ -23,8 +23,6 @@ const Country: React.FC<CountryProps> = ({ data }) => {
     }
   });
 
-  console.log(countryCount)
-
   const chartRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -43,6 +41,80 @@ const Country: React.FC<CountryProps> = ({ data }) => {
     };
 
     window.addEventListener('resize', resizeHandler);
+    // myChart.setOption({
+    //   grid: {
+    //     top: 10,
+    //     bottom: 30,
+    //     left: 80,
+    //     right: 50
+    //   },
+    //   xAxis: {
+    //     max: 'dataMax',
+    //     axisLine: {
+    //       show: true
+    //     },
+    //     splitLine: {
+    //       show: false
+    //     },
+    //     axisLabel: {
+    //       color: '#fff',
+    //     }
+    //   },
+    //   dataset: {
+    //     source: graphData
+    //   },
+    //   yAxis: {
+    //     type: 'category',
+    //     inverse: true,
+    //     data: graphData.map(item => item.name),
+    //     axisLabel: {
+    //       show: true,
+    //       fontSize: 14,
+    //       align: 'left',
+    //       margin: 60,
+    //       color: '#fff',
+    //       formatter: (value: string) => '{' + value + '| } {value|' + value + '}',
+    //       rich: {
+    //         value: {
+    //           fontSize: 14,
+    //           padding: 5
+    //         },
+    //         ...graphData.reduce((result: any, next: { name: string }) => {
+    //           result[next.name] = {
+    //             width: 20,
+    //             height: 20,
+    //             align: 'left',
+    //             backgroundColor: {
+    //               image: `/flags/1x1/${next.name.toLowerCase()}.svg`
+    //             }
+    //           }
+    //
+    //           return result;
+    //         }, {} as {[key: string]: string})
+    //       }
+    //     }
+    //   },
+    //   series: [
+    //     {
+    //       realtimeSort: true,
+    //       seriesLayoutBy: 'column',
+    //       type: 'bar',
+    //       itemStyle: {
+    //         color: ({ dataIndex }: { dataIndex: number }) => dataIndex < 3 ? '#6CE37C' : '#00AEFC',
+    //       },
+    //       barWidth: 14,
+    //       data: graphData,
+    //       label: {
+    //         color: '#FFF',
+    //         show: true,
+    //         precision: 1,
+    //         position: 'right',
+    //         valueAnimation: true,
+    //         fontFamily: 'monospace',
+    //       }
+    //     }
+    //   ],
+    // });
     myChart.setOption({
       grid: {
         top: 10,
@@ -50,74 +122,30 @@ const Country: React.FC<CountryProps> = ({ data }) => {
         left: 80,
         right: 50
       },
-      xAxis: {
-        max: 'dataMax',
-        axisLine: {
-          show: true
-        },
-        splitLine: {
-          show: false
-        },
-        axisLabel: {
-          color: '#fff',
-        }
-      },
-      dataset: {
-        source: graphData
-      },
-      yAxis: {
-        type: 'category',
-        inverse: true,
-        data: graphData.map(item => item.name),
-        axisLabel: {
-          show: true,
-          fontSize: 14,
-          align: 'left',
-          margin: 60,
-          color: '#fff',
-          formatter: (value: string) => '{' + value + '| } {value|' + value + '}',
-          rich: {
-            value: {
-              fontSize: 14,
-              padding: 5
-            },
-            ...graphData.reduce((result: any, next: { name: string }) => {
-              result[next.name] = {
-                width: 20,
-                height: 20,
-                align: 'left',
-                backgroundColor: {
-                  image: `/flags/1x1/${next.name.toLowerCase()}.svg`
-                }
-              }
-
-              return result; 
-            }, {} as {[key: string]: string})
-          }
-        }
-      },
       series: [
         {
-          realtimeSort: true,
-          seriesLayoutBy: 'column',
-          type: 'bar',
-          itemStyle: {
-            color: ({ dataIndex }: { dataIndex: number }) => dataIndex < 3 ? '#6CE37C' : '#00AEFC',
-          },
-          barWidth: 14,
-          data: graphData,
+          type: 'pie', // 修改为饼图类型
+          radius: '50%', // 设置饼图半径大小
+          center: ['50%', '50%'], // 设置饼图中心位置
+          itemStyle: {},
           label: {
             color: '#FFF',
             show: true,
             precision: 1,
-            position: 'right',
-            valueAnimation: true,
+            formatter: '{b}:\n{d}%', // 设置标签显示的内容
             fontFamily: 'monospace',
-          }
-        }
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: 16,
+              fontWeight: 'bold',
+            },
+          },
+          data: graphData,
+        },
       ],
     });
-
     return () => {
       window.removeEventListener('resize', resizeHandler);
       myChart.dispose();
