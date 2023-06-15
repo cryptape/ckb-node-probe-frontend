@@ -1,5 +1,6 @@
 # CKB-NODE-PROBE-FRONTEND
-![Uploading image.png…]()
+![image](https://github.com/cryptape/ckb-node-probe-frontend/assets/11926244/983e40d8-4771-4140-b157-a7954675fc6a)
+
 
 ## Getting Started
 
