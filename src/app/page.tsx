@@ -26,7 +26,8 @@ interface PeerData {
 
 export default function Home() {
   const [type, setType] = useState('mirana');
-  const [data, setData] = useState([] as PeerData[]);
+  const [data, setData] = useState([]);
+  const [versionedData, setVersionedData] = useState([] as PeerData[])
 
   useEffect(() => {
     async function load() {
@@ -38,8 +39,8 @@ export default function Home() {
         const lowerCaseKey = item.version_short.toLowerCase();
         return lowerCaseKey !== 'unknown';
       });
-
-      setData(filteredData);
+      setData(result)
+      setVersionedData(filteredData);
     }
 
     load();
@@ -48,7 +49,7 @@ export default function Home() {
   return <>
     <Header type={type} setType={setType} />
     <main className={className('ckb-container', styles.main)}>
-      <OnlineNode nodes={data.length} />
+      <OnlineNode nodes={versionedData.length} />
       <Map data={data} />
       <div className={styles.group}>
         <div className={styles.chartWrapper}>

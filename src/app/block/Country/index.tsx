@@ -57,8 +57,6 @@ const Country: React.FC<CountryProps> = ({ data }) => {
       };
     });
 
-    console.log(graphData)
-
     const myChart = echarts.init(chartRef.current);
     const resizeHandler = () => {
       myChart.resize();
