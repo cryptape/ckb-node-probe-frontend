@@ -1,8 +1,9 @@
 "use client";
 import { Data } from '@/interface/page';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import styles from './index.module.scss';
+import {isMobileDevice} from "@/app/utils";
 
 interface CountryProps {
   data: Data[]
@@ -15,7 +16,12 @@ interface CountryCount {
 const Country: React.FC<CountryProps> = ({ data }) => {
   const countryCount: CountryCount = {};
 
-  data.forEach(({ country }) => {
+  data.forEach(({ country, version }) => {
+
+    if (version == '') {
+      return;
+    }
+
     if (country in countryCount) {
       countryCount[country]++;
     } else {
@@ -23,99 +29,74 @@ const Country: React.FC<CountryProps> = ({ data }) => {
     }
   });
 
+  const total: number = Object.values(countryCount).reduce((sum, value) => sum + value, 0);
+
+  const filteredData: CountryCount = Object.entries(countryCount)
+      .filter(([key, value]) => (value / total) >= 0.01)
+      .reduce((obj, [key, value]) => {
+        obj[key] = value;
+        return obj;
+      }, {} as CountryCount);
+
+  const othersValue: number = Object.values(countryCount)
+      .filter(value => (value / total) < 0.01)
+      .reduce((sum, value) => sum + value, 0);
+
+  if (othersValue > 0) {
+    filteredData['others'] = othersValue;
+  }
+  const chartRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    const container = 'countryGraph';
-    const target = document.getElementById(container);
-    if (!target) return;
+    if (!chartRef.current) return
 
-    let graphData = Object.keys(countryCount).sort((a, b) => countryCount[b] - countryCount[a]).map((key, index) => {
-      return { 
-        name: key, 
-        value: countryCount[key],
+    let graphData = Object.keys(filteredData).sort((a, b) => filteredData[b] - filteredData[a]).map((key, index) => {
+      return {
+        name: key,
+        value: filteredData[key],
       };
-    }).slice(0, 10);
+    });
 
-    const myChart = echarts.init(target);
+    const myChart = echarts.init(chartRef.current);
+    const resizeHandler = () => {
+      myChart.resize();
+    };
+
+    window.addEventListener('resize', resizeHandler);
     myChart.setOption({
-      grid: {
-        top: 10,
-        bottom: 30,
-        left: 80,
-        right: 50
-      },
-      xAxis: {
-        max: 'dataMax',
-        axisLine: {
-          show: true
-        },
-        splitLine: {
-          show: false
-        },
-        axisLabel: {
-          color: '#fff',
-        }
-      },
-      dataset: {
-        source: graphData
-      },
-      yAxis: {
-        type: 'category',
-        inverse: true,
-        data: graphData.map(item => item.name),
-        axisLabel: {
-          show: true,
-          fontSize: 14,
-          align: 'left',
-          margin: 60,
-          color: '#fff',
-          formatter: (value: string) => '{' + value + '| } {value|' + value + '}',
-          rich: {
-            value: {
-              fontSize: 14,
-              padding: 5
-            },
-            ...graphData.reduce((result: any, next: { name: string }) => {
-              result[next.name] = {
-                width: 20,
-                height: 20,
-                align: 'left',
-                backgroundColor: {
-                  image: `/flags/1x1/${next.name.toLowerCase()}.svg`
-                }
-              }
-
-              return result; 
-            }, {} as {[key: string]: string})
-          }
-        }
+      tooltip: {
+        trigger: 'item'
       },
       series: [
         {
-          realtimeSort: true,
-          seriesLayoutBy: 'column',
-          type: 'bar',
-          itemStyle: {
-            color: ({ dataIndex }: { dataIndex: number }) => dataIndex < 3 ? '#6CE37C' : '#00AEFC',
-          },
-          barWidth: 14,
+          name: 'Country/Region',
+          type: 'pie',
+          radius: isMobileDevice() ? '50%' : '70%',
           data: graphData,
           label: {
-            color: '#FFF',
-            show: true,
-            precision: 1,
-            position: 'right',
-            valueAnimation: true,
-            fontFamily: 'monospace',
+            color: '#FFF'
+          },
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
           }
         }
-      ],
+      ]
     });
+    return () => {
+      window.removeEventListener('resize', resizeHandler);
+      myChart.dispose();
+    }
+
   }, [data]);
 
   return (
     <div className={styles.country}>
-      <div className="ckb-header-bar">Count by country</div>
-      <div id='countryGraph' className={styles.countryGraph}></div>
+      <div className="ckb-header-bar">Count by Country/Region</div>
+      <div ref={chartRef} id='countryGraph' className={styles.countryGraph}></div>
       <div className="ckb-footer-label"># of nodes</div>
     </div>
   )

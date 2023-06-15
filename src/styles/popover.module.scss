@@ -13,29 +13,29 @@
     border-radius: 4px;
     overflow: hidden;
 
-.markdownHLine {
-    width: 8px;
-}
+    .markdownHLine {
+        width: 8px;
+    }
 
-.markdownContentContainer {
-    color: #ffffff;
-    background-color: #23262F;
-    .markdownText {
-        font-size: 12px;
-        font-weight: 300;
-        padding-left: 15px;
+    .markdownContentContainer {
         color: #ffffff;
-        span {
-            color: #6CE37C;
-            font-weight: 400;
-        }
-        .textItem {
-            margin-bottom: 10px;
-            a {
-                font-size: 12px;
+        background-color: #23262F;
+        .markdownText {
+            font-size: 12px;
+            font-weight: 300;
+            padding-left: 15px;
+            color: #ffffff;
+            span {
+                color: #6CE37C;
+                font-weight: 400;
+            }
+            .textItem {
+                margin-bottom: 10px;
+                a {
+                    font-size: 12px;
+                }
             }
         }
-    }
 }
 
 &.tips {
@@ -54,5 +54,11 @@
             height: 24px;
             margin-right: 7px;
         }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .markdownWrapper {
+        width: auto;
     }
 }

@@ -4,8 +4,21 @@ import { isMobileDevice } from "@/app/utils";
 
 export function renderMapGraph(data: Data[]) {
   const container = 'mapGraph';
-  if (!document.getElementById(container)) return;
+  const body = document.body;
 
+  if (!document.getElementById(container)) return;
+  const disableScroll = () => {
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.width = "100vw";
+    body.style.height = "100vh";
+  };
+  const enableScroll = () => {
+    body.style.overflow = "";
+    body.style.position = "";
+    body.style.width = "";
+    body.style.height = "";
+  };
   let map: any;
   const _window = window as any;
   const L = _window.L;
@@ -45,13 +58,22 @@ export function renderMapGraph(data: Data[]) {
   if (isMobileDevice()) {
     const moveControl = L.control();
     moveControl.setPosition('bottomright');
+    document.addEventListener("fullscreenchange", ()=> {
+      if (document.fullscreenElement) {
+        console.log('enter')
+        disableScroll();
+      } else {
+        console.log('leave')
+        enableScroll();
+      }
+    })
 
     moveControl.onAdd = () => {
       const lockIcon = 'lock-icon';
       const unLockIcon = 'unlock-icon';
       const container = L.DomUtil.create('div', 'move-control');
 
-      container.innerHTML = `<span class="${lockIcon}"></span>`;
+      container.innerHTML = `<span class="${unLockIcon}"></span>`;
       container.style.cursor = 'pointer';
 
       L.DomEvent.on(container, 'touchstart', (event: Event) => {

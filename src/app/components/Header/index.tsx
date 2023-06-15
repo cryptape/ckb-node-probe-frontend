@@ -20,12 +20,18 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
     {
       label: 'Mirana (CKB Mainnet)',
       key: 'mirana',
-      onClick: () => setType('mirana')
+      onClick: () => {
+        setType('mirana')
+        setOpen(false)
+      }
     },
     {
       label: 'Pudge (CKB Testnet)',
       key: 'pudge',
-      onClick: () => setType('pudge')
+      onClick: () => {
+        setType('pudge')
+        setOpen(false)
+      }
     }
   ]
 
@@ -35,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
         <div className={styles.logo}>
           <Image src={Icon} alt='LOGO' />
           <span className={styles.title}>CKB Full Nodes</span>
-          <Popover placement="bottomLeft" content={<>
+          <Popover placement="bottom" content={<>
             <div className={popoverStyles.strongTitle}>A Full Node stores and validates the entire blockchain.</div>
             <br />
             <div className={`${popoverStyles.markdownWrapper} ${popoverStyles.tips}`}>
@@ -67,7 +73,7 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
           <div className={styles.menu}>
             <Dropdown menu={{ items }}>
               <a onClick={(e) => e.preventDefault()}>
-                <Space>{items.filter(item => item.key === type)[0].label}<DownOutlined /></Space>
+                <Space >{items.filter(item => item.key === type)[0].label}<DownOutlined /></Space>
               </a>
             </Dropdown>
           </div>

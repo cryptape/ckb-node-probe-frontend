@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
+import { Data } from '@/interface/page';
 import Map from './block/Map';
 import Header from './components/Header';
 import Version from './block/Version';
@@ -10,14 +11,18 @@ import styles from './page.module.scss';
 
 export default function Home() {
   const [type, setType] = useState('mirana');
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([] as Data[]);
 
   useEffect(() => {
     async function load() {
       const url = location.hostname === 'localhost' ? 'nodes-dev.ckbapp.dev' : location.hostname;
       const loadData = await fetch(`//api-${url}/peer?network=${type}`);
-      const result = await loadData.json();
-      setData(result);
+      const result: Data[] = await loadData.json();
+      const filteredData = result.filter((item) => {
+        const version = item.version
+        return version != '';
+      });
+      setData(filteredData)
     }
 
     load();
@@ -29,8 +34,12 @@ export default function Home() {
       <OnlineNode nodes={data.length} />
       <Map data={data} />
       <div className={styles.group}>
-        <Country data={data} />
-        <Version data={data} />
+        <div className={styles.chartWrapper}>
+          <Country data={data} />
+        </div>
+        <div className={styles.chartWrapper}>
+          <Version data={data} />
+        </div>
       </div>
     </main>
     <footer className={styles.footer}>
