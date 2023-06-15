@@ -24,14 +24,6 @@ npm install
 yarn add
 ```
 
-- Install the necessary dependencies
-
-```bash
-npm install
-# or
-yarn add
-```
-
 - Run the project
 
 ```bash
