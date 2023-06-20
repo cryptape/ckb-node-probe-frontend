@@ -6,6 +6,18 @@
 .popoverWrapper {
     background-color: #2D3039;
 }
+
+.unknownNodesTitle {
+    color: #6CE37C;
+    span {
+        font-size: 16px;
+    }
+}
+
+.unknownNodesContent {
+    color: #ffffff;
+}
+
 .markdownWrapper {
     width: 570px;
     display: flex;
@@ -57,8 +69,23 @@
     }
 }
 
+
 @media screen and (max-width: 600px) {
     .markdownWrapper {
         width: auto;
+    }
+}
+
+.versionPopover {
+    .custom-popover .ant-popover-inner {
+        background-color: #23262F;
+    }
+
+    .custom-popover .ant-popover-arrow {
+        background-color: #23262F;
+    }
+
+    .custom-popover .ant-popover-arrow-content {
+        background-color: #23262F;
     }
 }

@@ -12,6 +12,7 @@ import styles from './page.module.scss';
 export default function Home() {
   const [type, setType] = useState('mirana');
   const [data, setData] = useState([] as Data[]);
+  const [filterData, setFilterData] = useState([] as Data[]);
 
   useEffect(() => {
     async function load() {
@@ -22,7 +23,8 @@ export default function Home() {
         const version = item.version
         return version != '';
       });
-      setData(filteredData)
+      setData(result)
+      setFilterData(filteredData)
     }
 
     load();
@@ -31,7 +33,7 @@ export default function Home() {
   return <>
     <Header type={type} setType={setType} />
     <main className={className('ckb-container', styles.main)}>
-      <OnlineNode nodes={data.length} />
+      <OnlineNode nodes={filterData.length} />
       <Map data={data} />
       <div className={styles.group}>
         <div className={styles.chartWrapper}>

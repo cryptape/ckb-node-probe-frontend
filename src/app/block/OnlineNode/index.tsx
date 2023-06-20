@@ -1,5 +1,5 @@
 import {Popover, Typography} from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
+import { QuestionCircleFilled } from '@ant-design/icons';
 import styles from './index.module.scss';
 import popoverStyles from "@/styles/popover.module.scss";
 interface OnlineNodeProps {
@@ -37,7 +37,7 @@ const OnlineNode: React.FC<OnlineNodeProps> = ({ nodes }) => {
               </div>
               <Link href="https://blog.cryptape.com/peer-discovery-in-nervos-network" target="_blank">Learn more</Link>
           </>}>
-              <QuestionCircleOutlined />
+              <QuestionCircleFilled/>
           </Popover>
       </p>
     </div>
