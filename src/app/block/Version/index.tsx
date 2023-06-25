@@ -95,7 +95,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
   return (
     <div className={styles.version}>
       <div className="ckb-header-bar">
-        Count by version
+        Nodes by Version
         <Popover
               overlayClassName={popoverStyles.versionPopover}
                  placement="bottom" content={<>
