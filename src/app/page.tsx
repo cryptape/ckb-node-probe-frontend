@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     async function load() {
       const url = location.hostname === 'localhost' ? 'nodes-dev.ckbapp.dev' : location.hostname;
-      const loadData = await fetch(`//api-${url}/peer?network=${type}`);
+      const loadData = await fetch(`//api-${url}/peer?unknown_offline_timeout=10080&network=${type}`);
       const result: Data[] = await loadData.json();
       const filteredData = result.filter((item) => {
         const version = item.version
