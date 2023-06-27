@@ -1,5 +1,6 @@
 import {Popover, Typography} from 'antd';
 import { QuestionCircleFilled } from '@ant-design/icons';
+import CountUp from 'react-countup';
 import styles from './index.module.scss';
 import popoverStyles from "@/styles/popover.module.scss";
 interface OnlineNodeProps {
@@ -11,7 +12,7 @@ const { Link } = Typography
 const OnlineNode: React.FC<OnlineNodeProps> = ({ nodes }) => {
   return (
     <div className={styles.onlineNode}>
-      <h1>{nodes}</h1>
+      <h1>{nodes ? <CountUp start={0} end={nodes} /> : '--'}</h1>
       <p>
         CKB Nodes Online
           <Popover placement="bottom" content={<>

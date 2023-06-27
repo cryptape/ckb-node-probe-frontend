@@ -95,13 +95,13 @@ const Version: React.FC<VersionProps> = ({ data }) => {
   return (
     <div className={styles.version}>
       <div className="ckb-header-bar">
-        Nodes by Version
+        <p className="header-bar-title">Nodes by Version <span>(Excluded {unknownVersionNodeCount} version unknown nodes)</span></p>
         <Popover
               overlayClassName={popoverStyles.versionPopover}
                  placement="bottom" content={<>
           <div>
-            <div className={popoverStyles.unknownNodesTitle}>unknown version nodes: <span>{ unknownVersionNodeCount }</span></div>
-            <div className={popoverStyles.unknownNodesTitle}>known version nodes: <span>{ knownVersionNodeCount }</span></div>
+            <div className={popoverStyles.unknownNodesTitle}>Unknown version nodes: <span>{ unknownVersionNodeCount }</span></div>
+            <div className={popoverStyles.unknownNodesTitle}>Known version nodes: <span>{ knownVersionNodeCount }</span></div>
             <div className={popoverStyles.unknownNodesContent}>
               <a target="_blank" href="https://github.com/cryptape/ckb-node-probe-frontend/blob/develop/public/Why%20we%20can%20not%20detect%20some%20node%E2%80%99s%20exact%20version.md">
                 Why we can not detect some node’s exact version ?
