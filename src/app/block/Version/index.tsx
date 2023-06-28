@@ -103,8 +103,8 @@ const Version: React.FC<VersionProps> = ({ data }) => {
             <div className={popoverStyles.unknownNodesTitle}>Version unknown nodes: <span>{ unknownVersionNodeCount }</span></div>
             <div className={popoverStyles.unknownNodesTitle}>Version known nodes: <span>{ knownVersionNodeCount }</span></div>
             <div className={popoverStyles.unknownNodesContent}>
-              <a target="_blank" href="https://github.com/cryptape/ckb-node-probe-frontend/blob/develop/public/Why%20we%20can%20not%20detect%20some%20node%E2%80%99s%20exact%20version.md">
-                Why we can not detect some node’s exact version ?
+              <a target="_blank" href="https://github.com/cryptape/ckb-node-probe-frontend/blob/main/public/Why%20we%20can%20not%20detect%20some%20node%E2%80%99s%20exact%20version.md">
+                Why a node&rsquo;s version can be undetectable ?
               </a>
             </div>
           </div>
