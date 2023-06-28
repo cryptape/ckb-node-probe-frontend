@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import {Drawer, Dropdown, Popover, Space, Typography} from 'antd';
-import { CloseOutlined, DownOutlined, MenuOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { CloseOutlined, DownOutlined, MenuOutlined, QuestionCircleFilled } from '@ant-design/icons';
 import Image from 'next/image';
 import Icon from './icon.png';
 import styles from './index.module.scss';
@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
       <div className={`ckb-container ${styles.container}`}>
         <div className={styles.logo}>
           <Image src={Icon} alt='LOGO' />
-          <span className={styles.title}>CKB Full Nodes</span>
+          <span className={styles.title}>CKB Node Probe</span>
           <Popover placement="bottom" content={<>
             <div className={popoverStyles.strongTitle}>A Full Node stores and validates the entire blockchain.</div>
             <br />
@@ -66,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
             </div>
             <Link href="https://docs.nervos.org/docs/basics/glossary/#full-node" target="_blank">Learn more</Link>
           </>}>
-            <QuestionCircleOutlined />
+            <QuestionCircleFilled />
           </Popover>
         </div>
         <div className={styles.right}>

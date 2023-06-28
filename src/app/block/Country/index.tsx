@@ -95,7 +95,7 @@ const Country: React.FC<CountryProps> = ({ data }) => {
 
   return (
     <div className={styles.country}>
-      <div className="ckb-header-bar">Count by Country/Region</div>
+      <div className="ckb-header-bar">Nodes by Country/Region</div>
       <div ref={chartRef} id='countryGraph' className={styles.countryGraph}></div>
       <div className="ckb-footer-label"># of nodes</div>
     </div>

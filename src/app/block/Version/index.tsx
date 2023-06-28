@@ -1,10 +1,12 @@
 "use client";
 import { Data } from '@/interface/page';
-import {useEffect, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import { isMobileDevice } from '@/app/utils';
-
+import { Popover } from 'antd';
+import { QuestionCircleFilled } from '@ant-design/icons';
 import * as echarts from 'echarts';
 import styles from './index.module.scss';
+import popoverStyles from "@/styles/popover.module.scss";
 
 interface VersionProps {
   data: Data[]
@@ -14,11 +16,25 @@ interface VersionCount {
   [key: string]: number;
 }
 
-const Version: React.FC<VersionProps> = ({ data }) => {
-  const versionCount: VersionCount = {};
+const overPopover = {
+  arrow: {
+    background: '#23262F', // 修改箭头背景色
+  },
+  content: {
+    background: '#23262F', // 修改内容背景色
+  },
+};
 
+const Version: React.FC<VersionProps> = ({ data }) => {
+  const [unknownVersionNodeCount, setUnknownVersionNodeCount] = useState(0)
+  const [knownVersionNodeCount, setKnownVersionNodeCount] = useState(0)
+  const versionCount: VersionCount = {};
+  let unKnowNodes: number = 0
   data.forEach(({ version_short, version }) => {
-    if (version == '') return;
+    if (version == '') {
+      unKnowNodes++
+      return
+    }
 
     if (version_short in versionCount) versionCount[version_short]++;
     else versionCount[version_short] = 1;
@@ -29,6 +45,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
   useEffect(() => {
     const container = 'versionGraph';
     const target = document.getElementById(container);
+    const sum = Object.values(versionCount).reduce((total, value) => total + value, 0);
     if (!chartRef.current) return
 
     let graphData = Object.keys(versionCount).map((key, index) => ({ 
@@ -36,7 +53,8 @@ const Version: React.FC<VersionProps> = ({ data }) => {
       value: versionCount[key]
     }))
     .sort((pre, next) => next.value - pre.value);
-
+    setUnknownVersionNodeCount((unKnowNodes))
+    setKnownVersionNodeCount((sum))
     const myChart = echarts.init(chartRef.current);
     const resizeHandler = () => {
       myChart.resize();
@@ -46,7 +64,7 @@ const Version: React.FC<VersionProps> = ({ data }) => {
 
     myChart.setOption({
       tooltip: {
-        trigger: 'item'
+        trigger: 'item',
       },
       series: [
         {
@@ -76,7 +94,24 @@ const Version: React.FC<VersionProps> = ({ data }) => {
   
   return (
     <div className={styles.version}>
-      <div className="ckb-header-bar">Count by version</div>
+      <div className="ckb-header-bar">
+        <p className="header-bar-title">Nodes by Version <span>(Excluded {unknownVersionNodeCount} version unknown nodes)</span></p>
+        <Popover
+              overlayClassName={popoverStyles.versionPopover}
+                 placement="bottom" content={<>
+          <div>
+            <div className={popoverStyles.unknownNodesTitle}>Version unknown nodes: <span>{ unknownVersionNodeCount }</span></div>
+            <div className={popoverStyles.unknownNodesTitle}>Version known nodes: <span>{ knownVersionNodeCount }</span></div>
+            <div className={popoverStyles.unknownNodesContent}>
+              <a target="_blank" href="https://github.com/cryptape/ckb-node-probe-frontend/blob/develop/public/Why%20we%20can%20not%20detect%20some%20node%E2%80%99s%20exact%20version.md">
+                Why we can not detect some node’s exact version ?
+              </a>
+            </div>
+          </div>
+        </>}>
+          <QuestionCircleFilled/>
+        </Popover>
+      </div>
       <div ref={chartRef} id='versionGraph' className={styles.versionGraph}></div>
       <div className="ckb-footer-label"># of nodes</div>
     </div>
