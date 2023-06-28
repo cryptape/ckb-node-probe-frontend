@@ -1,4 +1,4 @@
-# Why can't we detect the exact version of some nodes?
+# Why a node's version can be undetectable ?
 If your node is detected, but the version remains "Unknown" by the probe, please move on to the [Tweak your internet connection](#Why-we-can-not-detect-some-node-s-exact-version-8751fc2f256c4cf09ca3404840c21fc9) section for solution.
 
 # **Understand Node Detection**
