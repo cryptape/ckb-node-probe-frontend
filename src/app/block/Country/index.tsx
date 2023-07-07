@@ -17,11 +17,6 @@ const Country: React.FC<CountryProps> = ({ data }) => {
   const countryCount: CountryCount = {};
 
   data.forEach(({ country, version }) => {
-
-    if (version == '') {
-      return;
-    }
-
     if (country in countryCount) {
       countryCount[country]++;
     } else {
