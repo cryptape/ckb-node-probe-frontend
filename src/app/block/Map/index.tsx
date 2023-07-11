@@ -36,7 +36,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
                   </svg>
               </div>
               <div>
-                  Don’t see your node on the map? <a>Help us count you in!</a>
+                  Don’t see your node on the map? <a target="_blank" href="https://www.notion.so/cryptape/CNFT-Projects-4051ad99932b4446bc5ebc7848cb37ca">Help us count you in!</a>
               </div>
               <div className={styles.svgItemRight}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
