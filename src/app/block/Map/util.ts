@@ -67,7 +67,6 @@ export function renderMapGraph(data: Data[]) {
         enableScroll();
       }
     })
-
     moveControl.onAdd = () => {
       const lockIcon = 'lock-icon';
       const unLockIcon = 'unlock-icon';
