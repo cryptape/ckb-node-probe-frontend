@@ -3,8 +3,75 @@
   background-color: black;
   margin-bottom: 20px;
   border-radius: 16px;
+
+  .reportContainer {
+    width: 542px;
+  }
+
+  .reportContainer,
+  .mobileReportContainer {
+    position: absolute;
+    height: 36px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    bottom: 25px;
+    background: #2E3038;
+    border-radius: 47px;
+    color: #ffffff;
+    font-size: 14px;
+    a {
+      color: #6CE37C !important;
+      text-decoration: none !important;
+    }
+    .svgItemLeft {
+      display: flex;
+      align-items: center;
+    }
+    .svgItemRight {
+      display: flex !important;
+      align-items: center;
+      padding: 0 16px 0 10px;
+    }
+  }
 }
 
-//canvas {
-//  z-index: 9999;
-//}
+@media (min-width: 768px) {
+  .mapGraph {
+    .reportContainer {
+      left: 50%;
+      transform: translateX(-50%);
+      a {
+        padding-left: 6px;
+      }
+      .svgItemLeft {
+        padding: 0 12px 0 20px;
+      }
+    }
+    .mobileReportContainer {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .mapGraph {
+    .reportContainer {
+      display: none;
+    }
+    .mobileReportContainer {
+      width: 17.3125rem;
+      left: 45%;
+      transform: translateX(-50%);
+      padding: 0.56rem 0.75rem;
+      font-size: 0.75rem;
+      .svgItemLeft {
+        margin-right: 0.56rem;
+      }
+      a {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
