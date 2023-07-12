@@ -4,6 +4,10 @@
   margin-bottom: 20px;
   border-radius: 16px;
 
+  .reportContainer {
+    width: 542px;
+  }
+
   .reportContainer,
   .mobileReportContainer {
     position: absolute;
@@ -27,7 +31,7 @@
     .svgItemRight {
       display: flex !important;
       align-items: center;
-      padding: 0 20px 0 12px;
+      padding: 0 16px 0 10px;
     }
   }
 }
@@ -56,7 +60,9 @@
       display: none;
     }
     .mobileReportContainer {
-      left: 0.87rem;
+      width: 17.3125rem;
+      left: 45%;
+      transform: translateX(-50%);
       padding: 0.56rem 0.75rem;
       font-size: 0.75rem;
       .svgItemLeft {
