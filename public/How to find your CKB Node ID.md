@@ -57,7 +57,7 @@ The response should look something like this:
             }
         ],
         "connections": "0x8",
-        "node_id": "**QmdRWNKZ8EVJxhrDusbyYoYaGCQdStB4fSDotis7czUs**",
+        "node_id": "QmdRWNKZ8EVJxhrDusbyYoYaGCQdStB4fSDotis7czUs",
         "protocols": [
           //...
         ],
@@ -67,12 +67,74 @@ The response should look something like this:
 }
 ```
 
-In this response, the **`node_id`** field provides your Node ID. In this example, the Node ID is **`QmdRWNKZ8EVJxhrDusbyYoYaGCQdStB4fSDotis7czUs`**. You can either just note down this Node ID or keep the entire output.
+In this response, the **`node_id`** field provides your Node ID. 
+In this example, the Node ID is **`QmdRWNKZ8EVJxhrDusbyYoYaGCQdStB4fSDotis7czUs`**. 
+You can either note down the Node ID or keep the entire output.
 
 ## Step 3: Email us your Node ID
 
-Once you have your Node ID, **[EMAIL](mailto:ckb-node-probe@cryptape.com)** it to us ************************at **ckb-node-probe@cryptape.com** along with any relevant details about your router setup 😉.
+Once you have your Node ID, **[EMAIL](mailto:ckb-node-probe@cryptape.com)** it to us at **ckb-node-probe@cryptape.com** along with any relevant details about your router setup 😉.
 
 ---
 
 # **Extra: Check Your Node Configuration**
+
+If you're unsure about your RPC address, follow the steps below to verify it:
+
+## *For Neuron:*
+
+Check your RPC address under Settings -> Network
+
+## *For CKB mainnet node:*
+
+### Step 1: Access your CKB Node directory
+
+**Open a new Terminal (on MacOS/Linux) or Command Prompt (on Windows) window** and navigate to your CKB node directory. Below is an example; you'll need to **replace the path** after `cd` with your actual pathname:
+
+```bash
+cd Your Node Pathname
+```
+
+- **For MacOS:**
+    
+    ```bash
+    cd /Users/[UserName]/Documents/ckb_v0.108.1_aarch64-apple-darwin
+    ```
+    
+- **For Linux:**
+    
+    ```bash
+    # Here we assume you download ckb from our Github's release page and untar-ed it directly
+    # possible previous steps:
+    # cd ~/Downloads && \
+    # wget https://github.com/nervosnetwork/ckb/releases/download/v0.111.0-rc8/ckb_v0.111.0-rc8_x86_64-unknown-linux-gnu.tar.gz && \
+    # tar -xvf ckb_v0.111.0-rc8_x86_64-unknown-linux-gnu.tar.gz
+    cd ~/Downloads/ckb_v0.111.0-rc8_x86_64-unknown-linux-gnu
+    ```
+    
+- **For Windows:**
+    
+    ```bash
+    cd C:\ckb\ckb_v0.104.1_x86_64-pc-windows-msvc
+    ```
+    
+
+### Step 2: **Locate Your `ckb.toml` Configuration File**
+
+In your CKB node directory, there is a file called **`ckb.toml`** that stores the node configuration. Open it using the following command:
+
+```bash
+vi ckb.toml
+```
+
+### Step 3: Find the RPC Listening Address
+
+Within the `ckb.toml` file, find the `listening_address` under the `[rpc]` section. This is the address your node uses to listen for RPC requests.
+
+For example, if you see:
+
+```toml
+listen_address = "127.0.0.1:8114"
+```
+
+This means your node is listening for RPC requests at `http://localhost:8114/`. Make sure to use this address while retrieving your Node ID.
