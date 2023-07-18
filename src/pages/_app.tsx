@@ -12,9 +12,9 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     const PageComponent = Component as (props: any) => ReactElement;
     return (
         <StateProvider>
-            <>
+            <div>
                 <Header />
-                <main>
+                <main className="ckb-container">
                     <PageComponent {...pageProps} />
                 </main>
                 <footer className={styles.footer}>
@@ -32,7 +32,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
                         <a target="_blank" href="https://github.com/cryptape/ckb-node-probe-frontend">Build</a> by 🦧 with ❤️
                     </p>
                 </footer>
-            </>
+            </div>
         </StateProvider>
     );
 };
