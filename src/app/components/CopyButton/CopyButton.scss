@@ -1,0 +1,36 @@
+.copy-btn-wrapper {
+  position: absolute;
+  top: 1.13rem;
+  right: 2rem;
+  &:hover {
+    cursor: pointer;
+    .popover-hover {
+      display: block;
+    }
+  }
+  .popover {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    white-space: pre;
+  }
+  .popover-arrow {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid black;
+  }
+  .code-block-copy-btn {
+    cursor: pointer;
+  }
+}

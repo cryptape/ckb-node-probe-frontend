@@ -1,0 +1,24 @@
+.tipsarea-wrapper {
+  background-color: #212227;
+  padding: 1rem 1.75rem;
+  border-radius: 0.5rem;
+  border-left-width: 0.25rem;
+  border-left-color: #3D3F46;
+  border-left-style: groove;
+  .tipsarea-header-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  .svg-container {
+    margin-right: 0.63rem;
+  }
+  code {
+    color: #F1403F;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    background-color: rgb(46 48 56);
+  }
+}

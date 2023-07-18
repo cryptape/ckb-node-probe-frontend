@@ -1,0 +1,42 @@
+.code-block {
+    position: relative;
+    margin: 16px 0;
+    font-weight: 300;
+
+    .code-block-copy-btn {
+        // position: absolute;
+
+    }
+    .new-keyword {
+        color: #18837D;
+    }
+
+    .github {
+        .url {
+            color: #2A2E2E;
+        }
+    }
+
+    .parameter {
+        &.token {
+            &.variable {
+                color: #fff;
+            }
+        }
+    }
+
+    code {
+        font-weight: 300;
+    }
+
+    .file-name-container {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 2px 12px;
+        background-color: #18837D;
+        color: #FFFFFF;
+        border-radius: 2px;
+        font-family: 'Roboto Mono',monospace;
+    }
+}
