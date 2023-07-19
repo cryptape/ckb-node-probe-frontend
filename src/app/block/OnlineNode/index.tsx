@@ -13,7 +13,7 @@ const OnlineNode: React.FC<OnlineNodeProps> = ({ nodes }) => {
   return (
     <div className={styles.onlineNode}>
       <h1>{ nodes }</h1>
-      <p>
+      <div>
         CKB Nodes Online
           <Popover placement="bottom" content={<>
               <div className={`${popoverStyles.markdownWrapper} ${popoverStyles.tips}`}>
@@ -40,7 +40,7 @@ const OnlineNode: React.FC<OnlineNodeProps> = ({ nodes }) => {
           </>}>
               <QuestionCircleFilled/>
           </Popover>
-      </p>
+      </div>
     </div>
   )
 }

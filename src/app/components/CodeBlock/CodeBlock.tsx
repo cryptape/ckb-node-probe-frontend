@@ -10,6 +10,7 @@ interface CodeBlockProps {
 }
 
 const urlPattern = /\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i;
+const ipWithPortPattern = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:\d{1,5}\b/;
 
 Prism.languages.bash = Prism.languages.extend('bash', {
     'keyword': Prism.languages.insertBefore('bash', 'keyword', {
@@ -43,6 +44,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
     const containsUrl = urlPattern.test(codeString);
     const isJavaScript = className.includes("language-javascript");
     const containsGit = codeString.includes('git');
+    const isIpWithPort = ipWithPortPattern.test(codeString);
 
     // If the codeString contains both a URL and 'git', add 'github' to the className
     if (containsUrl && containsGit) {
@@ -54,7 +56,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
             <pre className={className}>
                 <code>{code}</code>
             </pre>
-            {!isJavaScript && <CopyButton text={codeString} />}
+            {!isJavaScript && !isIpWithPort && <CopyButton text={codeString} />}
             {fileName && <div className="file-name-container">{ fileName }</div>}
         </div>
     );

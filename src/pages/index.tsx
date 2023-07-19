@@ -1,4 +1,3 @@
-"use client";
 import React, {useEffect, useState} from 'react'
 import OnlineNode from "@/app/block/OnlineNode";
 import Map from "@/app/block/Map";

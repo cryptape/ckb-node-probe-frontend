@@ -14,7 +14,7 @@
 
 <MarginContainer top={1} />
 
-In a new Terminal (on MacOS/Linux) or Command Prompt (on Windows) window, send an [RPC request](https://www.google.com) to your node to retrieve its ID. This ID uniquely identifies your node in the network.
+In a new Terminal (on MacOS/Linux) or Command Prompt (on Windows) window, send an [RPC request](https://github.com/nervosnetwork/ckb/tree/develop/rpc#method-local_node_info) to your node to retrieve its ID. This ID uniquely identifies your node in the network.
 
 <MarginContainer top={1.5} />
 
@@ -53,7 +53,7 @@ In a new Terminal (on MacOS/Linux) or Command Prompt (on Windows) window, send a
 
 <MarginContainer top={1.5} />
 
-<TipsArea type="note" text="If you have changed the default RPC address `http://localhost:8114/` in your CKB [node configuration](https://www.google.com), make sure to replace it in the commands above." />
+<TipsArea type="note" text="If you have changed the default RPC address `http://localhost:8114/` in your CKB [node configuration](#extra-check-your-node-configuration), make sure to replace it in the commands above." />
 
 <MarginContainer top={2.5} />
 
@@ -142,7 +142,7 @@ Check your RPC address under Settings -> Network
 <MarginContainer top={1} />
 
 
-Open a new Terminal (on MacOS/Linux) or Command Prompt (on Windows) window and navigate to your CKB node directory. Below is an example; you'll need to replace the path after cd with your actual pathname:
+Open a new Terminal (on MacOS/Linux) or Command Prompt (on Windows) window and navigate to your CKB node directory. Below is an example; you'll need to replace the path after `cd` with your actual pathname:
 
 <MarginContainer top={1} />
 
@@ -184,12 +184,12 @@ cd <Your Node Path Name>
 
 <MarginContainer top={2.5} />
 
-## Step 2: Locate Your ckb.toml Configuration File
+## Step 2: Locate Your `ckb.toml` Configuration File
 
 <MarginContainer top={0.5} />
 
 ---
-In your CKB node directory, there is a file called ckb.toml that stores the node configuration. Open it using the following command:
+In your CKB node directory, there is a file called `ckb.toml` that stores the node configuration. Open it using the following command:
 
 <MarginContainer top={1} />
 
@@ -207,7 +207,7 @@ vi ckb.toml
 
 <MarginContainer top={1} />
 
-Within the ckb.toml file, find the listening_address under the [rpc] section. This is the address your node uses to listen for RPC requests.
+Within the `ckb.toml` file, find the listening_address under the `[rpc]` section. This is the address your node uses to listen for RPC requests.
 
 For example, if you see:
 

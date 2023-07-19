@@ -5,7 +5,6 @@ import { isMobileDevice } from "@/app/utils";
 export function renderMapGraph(data: Data[]) {
   const container = 'mapGraph';
   const body = document.body;
-
   if (!document.getElementById(container)) return;
   const disableScroll = () => {
     body.style.overflow = "hidden";
@@ -55,46 +54,46 @@ export function renderMapGraph(data: Data[]) {
   L.heatLayer(heatMapData, { radius: 15 }).addTo(map);
   
 
-  if (isMobileDevice()) {
-    const moveControl = L.control();
-    moveControl.setPosition('bottomright');
-    document.addEventListener("fullscreenchange", ()=> {
-      if (document.fullscreenElement) {
-        message.destroy()
-        disableScroll();
-      } else {
-        message.destroy()
-        enableScroll();
-      }
-    })
-    moveControl.onAdd = () => {
-      const lockIcon = 'lock-icon';
-      const unLockIcon = 'unlock-icon';
-      const container = L.DomUtil.create('div', 'move-control');
-
-      container.innerHTML = `<span class="${unLockIcon}"></span>`;
-      container.style.cursor = 'pointer';
-
-      L.DomEvent.on(container, 'touchstart', (event: Event) => {
-        const target = document.querySelector('.move-control>span');
-        if(!target) return;
-
-        let newClass = lockIcon;
-        let messageContent = "Locked successfully!";
-
-        if (target.className === lockIcon) {
-          map.dragging.enable();
-          newClass = unLockIcon;
-          messageContent = "Unlocked, you can drag and move the map!";
-        } else map.dragging.disable();
-        
-        target.setAttribute('class', newClass);
-        message.success(messageContent);
-      });
-
-      return container;
-    };
-    moveControl.addTo(map);
-    map.dragging.disable();
-  }
+  // if (isMobileDevice()) {
+  //   const moveControl = L.control();
+  //   moveControl.setPosition('bottomright');
+  //   document.addEventListener("fullscreenchange", ()=> {
+  //     if (document.fullscreenElement) {
+  //       message.destroy()
+  //       disableScroll();
+  //     } else {
+  //       message.destroy()
+  //       enableScroll();
+  //     }
+  //   })
+  //   moveControl.onAdd = () => {
+  //     const lockIcon = 'lock-icon';
+  //     const unLockIcon = 'unlock-icon';
+  //     const container = L.DomUtil.create('div', 'move-control');
+  //
+  //     container.innerHTML = `<span class="${unLockIcon}"></span>`;
+  //     container.style.cursor = 'pointer';
+  //
+  //     L.DomEvent.on(container, 'touchstart', (event: Event) => {
+  //       const target = document.querySelector('.move-control>span');
+  //       if(!target) return;
+  //
+  //       let newClass = lockIcon;
+  //       let messageContent = "Locked successfully!";
+  //
+  //       if (target.className === lockIcon) {
+  //         map.dragging.enable();
+  //         newClass = unLockIcon;
+  //         messageContent = "Unlocked, you can drag and move the map!";
+  //       } else map.dragging.disable();
+  //
+  //       target.setAttribute('class', newClass);
+  //       message.success(messageContent);
+  //     });
+  //
+  //     return container;
+  //   };
+  //   moveControl.addTo(map);
+  //   map.dragging.disable();
+  // }
 }

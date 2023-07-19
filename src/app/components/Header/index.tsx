@@ -7,8 +7,7 @@ import Image from 'next/image';
 import Icon from './icon.png';
 import styles from './index.module.scss';
 import popoverStyles from '../../../styles/popover.module.scss'
-
-const { Link } = Typography
+import Link from 'next/link'
 
 const Header: React.FC = () => {
   const { type, setType } = useStateContext();
@@ -36,8 +35,10 @@ const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={`ckb-container ${styles.container}`}>
         <div className={styles.logo}>
-          <Image src={Icon} alt='LOGO' />
-          <span className={styles.title}>CKB Node Probe</span>
+          <Link href="/">
+            <Image src={Icon} alt='LOGO' />
+            <span className={styles.title}>CKB Node Probe</span>
+          </Link>
           <Popover placement="bottom" content={<>
             <div className={popoverStyles.strongTitle}>A Full Node stores and validates the entire blockchain.</div>
             <br />

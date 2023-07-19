@@ -2,11 +2,9 @@
 import { FC, ReactElement } from 'react';
 import { AppProps } from 'next/app';
 import { StateProvider } from '../stateContext'
-import Head from "next/head";
 import Header from "@/app/components/Header";
 import styles from "@/app/page.module.scss";
 import '../app/globals.scss'
-import Script from "next/script";
 
 const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     const PageComponent = Component as (props: any) => ReactElement;

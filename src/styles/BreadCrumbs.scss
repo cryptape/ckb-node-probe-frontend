@@ -6,7 +6,9 @@
     font-size: 0.875rem;
     font-weight: 300;
     margin-left: 0.75rem;
-    color: #999999;
+    a {
+      color: #999999 !important;
+    }
   }
   .second-level-tag {
     font-size: 0.875rem;
