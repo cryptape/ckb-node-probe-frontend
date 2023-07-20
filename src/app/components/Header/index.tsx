@@ -1,20 +1,16 @@
 "use client";
 import { useState } from 'react';
+import { useStateContext } from '../../../stateContext';
 import {Drawer, Dropdown, Popover, Space, Typography} from 'antd';
-import { CloseOutlined, DownOutlined, MenuOutlined, QuestionCircleFilled } from '@ant-design/icons';
+import { CloseOutlined, CaretDownOutlined, MenuOutlined, QuestionCircleFilled } from '@ant-design/icons';
 import Image from 'next/image';
 import Icon from './icon.png';
 import styles from './index.module.scss';
 import popoverStyles from '../../../styles/popover.module.scss'
+import Link from 'next/link'
 
-interface HeaderProps {
-  type: string;
-  setType: (type: string) => void;
-}
-
-const { Link } = Typography
-
-const Header: React.FC<HeaderProps> = ({ type, setType }) => {
+const Header: React.FC = () => {
+  const { type, setType } = useStateContext();
   const [open, setOpen] = useState(false);
   const items = [
     {
@@ -39,8 +35,10 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
     <header className={styles.header}>
       <div className={`ckb-container ${styles.container}`}>
         <div className={styles.logo}>
-          <Image src={Icon} alt='LOGO' />
-          <span className={styles.title}>CKB Node Probe</span>
+          <Link href="/">
+            <Image src={Icon} alt='LOGO' />
+            <span className={styles.title}>CKB Node Probe</span>
+          </Link>
           <Popover placement="bottom" content={<>
             <div className={popoverStyles.strongTitle}>A Full Node stores and validates the entire blockchain.</div>
             <br />
@@ -73,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ type, setType }) => {
           <div className={styles.menu}>
             <Dropdown menu={{ items }}>
               <a onClick={(e) => e.preventDefault()}>
-                <Space >{items.filter(item => item.key === type)[0].label}<DownOutlined /></Space>
+                <Space >{items.filter(item => item.key === type)[0].label}<CaretDownOutlined /></Space>
               </a>
             </Dropdown>
           </div>

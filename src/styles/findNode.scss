@@ -1,0 +1,100 @@
+code {
+  color: #F1403F;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  background-color: rgb(46 48 56);
+}
+
+.markdown-wrapper {
+  // padding: 0 10rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  h1,
+  h2,
+  h3,
+  p {
+    color: #FFF;
+    margin: 0;
+  }
+
+  h1 {
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    code {
+      font-size: 1.5rem;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 150%;
+    font-weight: 300;
+  }
+
+  h3 {
+    color: #6CE37C;
+    font-family: Cascadia Mono;
+    font-size: 1.75rem;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 150%; /* 2.625rem */
+  }
+
+  summary {
+    color: #6CE37C;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 150%;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #333;
+    color: #333;
+    overflow: visible;
+    text-align: center;
+    height: 1px;
+  }
+}
+
+details {
+  border: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary {
+  list-style: none;
+  outline: none;
+}
+
+details > summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 8px;
+  transform: rotate(0deg);
+  transition: transform 0.2s linear;
+}
+
+details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+@media only screen and (max-width: 768px) {
+  .markdown-wrapper  {
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1280px)  {
+  .markdown-wrapper  {
+    padding: 0 2rem;
+  }
+}

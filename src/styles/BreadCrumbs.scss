@@ -1,0 +1,29 @@
+.breadcrumbs-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 1.87rem;
+  .first-level-tag {
+    font-size: 0.875rem;
+    font-weight: 300;
+    margin-left: 0.75rem;
+    a {
+      color: #999999 !important;
+    }
+  }
+  .second-level-tag {
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .breadcrumbs-wrapper {
+    .first-level-tag {
+      font-size: 0.775rem;
+    }
+    .second-level-tag {
+      font-size: 0.775rem;
+    }
+  }
+}
