@@ -4,7 +4,7 @@ This guide will help you find your CKB Node ID when your **CKB node or Neuron is
 
 ## Step 1: Retrieve your Node ID
 
-In a new Terminal (on MacOS/Linux) or Command Prompt (on Windows) window, send [an RPC request](https://github.com/nervosnetwork/ckb/tree/develop/rpc#method-local_node_info) to your node to retrieve its ID. This ID uniquely identifies your node in the network.
+In a new Terminal (on MacOS/Linux) or PowerShell (on Windows) window, send [an RPC request](https://github.com/nervosnetwork/ckb/tree/develop/rpc#method-local_node_info) to your node to retrieve its ID. This ID uniquely identifies your node in the network.
 
 - **For MacOS and Linux:**
 
