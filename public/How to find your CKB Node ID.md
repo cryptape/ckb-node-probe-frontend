@@ -4,7 +4,7 @@ This guide will help you find your CKB Node ID when your **CKB node or Neuron is
 
 ## Step 1: Retrieve your Node ID
 
-In a new Terminal (on MacOS/Linux) or PowerShell (on Windows) window, send [an RPC request](https://github.com/nervosnetwork/ckb/tree/develop/rpc#method-local_node_info) to your node to retrieve its ID. This ID uniquely identifies your node in the network.
+In a new Terminal (on MacOS/Linux) or Command Prompt (on Windows) window, send [an RPC request](https://github.com/nervosnetwork/ckb/tree/develop/rpc#method-local_node_info) to your node to retrieve its ID. This ID uniquely identifies your node in the network.
 
 - **For MacOS and Linux:**
 
@@ -21,18 +21,9 @@ In a new Terminal (on MacOS/Linux) or PowerShell (on Windows) window, send [an R
 
 - **For Windows**
 
-    ```powershell
-    $uri = "http://localhost:8114/"
-    $headers = @{"Content-Type" = "application/json"}
-    $body = @{
-        "id" = 2
-        "jsonrpc" = "2.0"
-        "method" = "local_node_info"
-        "params" = @()
-    } | ConvertTo-Json
-    
-    $response = Invoke-RestMethod -Method Post -Uri $uri -Headers $headers -Body $body
-    $response
+    ```cmd
+    curl -X POST -H "Content-Type: application/json" -d "{\"id\": 2, \"jsonrpc\": \"2.0\", \"method\": \"local_node_info\", \"params\": []}" http://localhost:8114 | powershell -command "$json = $input | ConvertFrom-Json; $result = $json.result; $result | ConvertTo-Json; $result | ConvertTo-Json  | Set-Clipboard; $result"
+
     ```
 
 
