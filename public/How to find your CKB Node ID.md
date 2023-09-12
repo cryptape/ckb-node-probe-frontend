@@ -1,8 +1,19 @@
 # How to Find Your CKB Node ID
 
-This guide will help you find your CKB Node ID when your **CKB node or Neuron is up and running**. You will need to open a new terminal window to interact with your node without disrupting its operation.
+This guide will help you find your CKB Node ID when your **CKB node or Neuron is up and running**. 
 
 ## Step 1: Retrieve your Node ID
+
+### Via Browser
+
+In the address bar of your browser, paste in the below text, and hit enter:
+
+```bash
+    data:text/html,<script>fetch("http://127.0.0.1:8114", {method: "POST", headers:{"Content-Type": "application/json"}, body: '{"id":0,"jsonrpc":"2.0","method":"local_node_info","params":[]}'}).then(response => response.json()).then(response => document.write(JSON.stringify(response)));</script>
+```
+
+
+### Via Command Line
 
 In a new Terminal (on MacOS/Linux) or Command Prompt (on Windows) window, send [an RPC request](https://github.com/nervosnetwork/ckb/tree/develop/rpc#method-local_node_info) to your node to retrieve its ID. This ID uniquely identifies your node in the network.
 
