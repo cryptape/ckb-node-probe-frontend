@@ -28,7 +28,9 @@ const GetRequestInfo: FC = () => {
 
             if (response.ok) {
                 const data = await response.json();
-                setResult(JSON.stringify(data, null, 2));
+                setResult(JSON.stringify({
+                    "node_id": data?.result["node_id"]
+                }, null, 2));
             } else {
                 setResult(`Error: ${response.statusText}`);
             }
