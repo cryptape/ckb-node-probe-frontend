@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #282c34;
+  color: #6CE37C;
+  padding: 2rem 0 2rem 2rem;
+  box-sizing: border-box;
+  border-radius: 10px;
+  align-items: flex-start;
+  margin: 0 auto;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #5C6F84;
+  border-radius: 5px;
+  background-color: #282c34;
+  color: #6CE37C;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #6CE37C;
+  color: #282c34;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}

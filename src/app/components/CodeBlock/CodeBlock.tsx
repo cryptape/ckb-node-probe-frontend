@@ -43,6 +43,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
 
     const containsUrl = urlPattern.test(codeString);
     const isJavaScript = className.includes("language-javascript");
+    const isJson = className.includes("language-json");
     const containsGit = codeString.includes('git');
     const isIpWithPort = ipWithPortPattern.test(codeString);
 
@@ -56,7 +57,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ children }) => {
             <pre className={className}>
                 <code>{code}</code>
             </pre>
-            {!isJavaScript && !isIpWithPort && <CopyButton text={codeString} />}
+            {!isJavaScript && !isJson && !isIpWithPort && <CopyButton text={codeString} />}
             {fileName && <div className="file-name-container">{ fileName }</div>}
         </div>
     );

@@ -9,13 +9,15 @@ import Tips from '@/app/components/Tips/Tips'
 import '../styles/findNode.scss'
 import TipsArea from "@/app/components/TipsArea/TipsArea";
 import MarginContainer from "@/app/components/MarignContainer/MarginContainer";
+import GetRequestInfo from '@/app/components/GetRequestInfo/GetRequestInfo';
 
 const components = {
     h1: H1,
     pre: CodeBlock,
     Tips:Tips,
     TipsArea: TipsArea,
-    MarginContainer: MarginContainer
+    MarginContainer: MarginContainer,
+    GetRequestInfo: GetRequestInfo
 }
 
 interface PostPageProps {
