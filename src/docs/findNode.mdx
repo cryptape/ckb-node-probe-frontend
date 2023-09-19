@@ -14,6 +14,12 @@ In the address bar of your browser, paste in the below text, and hit enter:
 
 #### Method 1:
 
+<GetRequestInfo />
+
+<MarginContainer top={1.5} />
+
+#### Method 2:
+In the address bar of your browser, paste in the below text, and hit enter:
 ```html
 data:text/html
 <script>
@@ -22,11 +28,6 @@ data:text/html
   .then(response => response.json()).then(response => document.write(JSON.stringify(response)));
 </script>
 ```
-<MarginContainer top={1.5} />
-
-#### Method 2:
-
-<GetRequestInfo />
 
 <MarginContainer top={1.5} />
 
@@ -34,21 +35,21 @@ data:text/html
 
 <MarginContainer top={1} />
 
-In a new Terminal (on MacOS/Linux) or PowerShell (on Windows) window, send an [RPC request](https://github.com/nervosnetwork/ckb/tree/develop/rpc#method-local_node_info) to your node to retrieve its ID. This ID uniquely identifies your node in the network.
+In a new Terminal (on MacOS/Linux) or Command Prompt (on Windows) window, send an [RPC request](https://github.com/nervosnetwork/ckb/tree/develop/rpc#method-local_node_info) to your node to retrieve its ID. This ID uniquely identifies your node in the network.
 
 <MarginContainer top={1.5} />
 
 <details>
     <summary>For MacOS and Linux:</summary>
     ```bash
-        curl -X "POST" "http://localhost:8114/" \
+curl -X "POST" "http://localhost:8114/" \
         -H 'Content-Type: application/json' \
         -d $'{
         "id": 2,
         "jsonrpc": "2.0",
         "method": "local_node_info",
         "params": []
-    }'
+}'
     ```
 </details>
 
@@ -57,14 +58,14 @@ In a new Terminal (on MacOS/Linux) or PowerShell (on Windows) window, send an [R
 <details>
     <summary>For Windows:</summary>
     ```bash
-    curl -X "POST" "http://localhost:8114/" \
-    -H 'Content-Type: application/json' \
-    -d $'{
+curl -X "POST" "http://localhost:8114/" \
+        -H 'Content-Type: application/json' \
+        -d $'{
         "id": 2,
         "jsonrpc": "2.0",
         "method": "local_node_info",
         "params": []
-    }'
+}'
     ```
 </details>
 
