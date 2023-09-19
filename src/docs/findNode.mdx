@@ -3,12 +3,32 @@
 # How to Find Your CKB Node ID
 <MarginContainer top={2} />
 
-<Tips text={"This guide will help you find your CKB Node ID when your ***CKB node or Neuron is up and running.*** You will need to open a new terminal window to interact with your node without disrupting its operation."} type={"normal"} />
+<Tips text={"This guide will help you find your CKB Node ID when your **CKB node or Neuron is up and running**."} type={"normal"} />
 
 <MarginContainer top={2.5} />
 
 ## Step 1: Retrieve your Node ID
 <MarginContainer top={0.5} />
+
+In the address bar of your browser, paste in the below text, and hit enter:
+
+#### Method 1:
+
+```html
+data:text/html
+<script>
+  fetch("http://127.0.0.1:8114", {method: "POST", headers:{"Content-Type": "application/json"},
+        body: '{"id":0,"jsonrpc":"2.0","method":"local_node_info","params":[]}'})
+  .then(response => response.json()).then(response => document.write(JSON.stringify(response)));
+</script>
+```
+<MarginContainer top={1.5} />
+
+#### Method 2:
+
+<GetRequestInfo />
+
+<MarginContainer top={1.5} />
 
 ---
 
@@ -37,17 +57,14 @@ In a new Terminal (on MacOS/Linux) or PowerShell (on Windows) window, send an [R
 <details>
     <summary>For Windows:</summary>
     ```bash
-    $uri = "http://localhost:8114/"
-    $headers = @{"Content-Type" = "application/json"}
-    $body = @{
-        "id" = 2
-        "jsonrpc" = "2.0"
-        "method" = "local_node_info"
-        "params" = @()
-    } | ConvertTo-Json
-
-    $response = Invoke-RestMethod -Method Post -Uri $uri -Headers $headers -Body $body
-    $response
+    curl -X "POST" "http://localhost:8114/" \
+    -H 'Content-Type: application/json' \
+    -d $'{
+        "id": 2,
+        "jsonrpc": "2.0",
+        "method": "local_node_info",
+        "params": []
+    }'
     ```
 </details>
 
@@ -94,10 +111,6 @@ The response should look something like this:
     "id": 2
 }
 ```
-
-<MarginContainer top={1.5} />
-
-<GetRequestInfo />
 
 <MarginContainer top={1.5} />
 

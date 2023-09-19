@@ -3,7 +3,7 @@ import CodeBlock from "@/app/components/CodeBlock/CodeBlock";
 import styles from './index.module.scss'
 
 const GetRequestInfo: FC = () => {
-    const [address, setAddress] = useState<string>('');
+    const [address, setAddress] = useState<string>('http://127.0.0.1:8114/');
     const [result, setResult] = useState<string | null>(null);
 
     const requestInfo = async () => {
