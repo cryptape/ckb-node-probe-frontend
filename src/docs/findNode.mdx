@@ -13,7 +13,7 @@
 In the address bar of your browser, paste in the below text, and hit enter:
 
 #### Method 1:
-
+Button:
 <GetRequestInfo />
 
 <MarginContainer top={1.5} />
@@ -58,14 +58,15 @@ curl -X "POST" "http://localhost:8114/" \
 <details>
     <summary>For Windows:</summary>
     ```bash
-curl -X "POST" "http://localhost:8114/" \
-        -H 'Content-Type: application/json' \
-        -d $'{
-        "id": 2,
-        "jsonrpc": "2.0",
-        "method": "local_node_info",
-        "params": []
-}'
+    curl -X POST -H "Content-Type: application/json"
+        -d
+            "{"id": 2, "jsonrpc": "2.0", "method": "local_node_info", "params": []}"
+        http://localhost:8114 | powershell -command "
+        $json = $input | ConvertFrom-Json;
+        $result = $json.result;
+        $result | ConvertTo-Json;
+        $result | ConvertTo-Json | Set-Clipboard; $result"
+    }'
     ```
 </details>
 
