@@ -108,6 +108,9 @@ body {
   background-image: url('/fullscreen.svg') !important;
 }
 
+strong {
+  color: #6CE37C;
+}
 .move-control{
   span{
     display: inline-block;
@@ -118,6 +121,10 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
   }
+}
+
+h4 {
+  color: #6CE37C;
 }
 
 .lock-icon{
