@@ -31,7 +31,7 @@ const OnlineNode: React.FC<OnlineNodeProps> = ({ nodes }) => {
                               <span>Peer Discovery: </span> A bootnode with high uptime and strong connectivity discovers Full Nodes as peer nodes through message discovery protocol.
                           </div>
                           <div className={popoverStyles.textItem}>
-                              <span>Counting Online Nodes: </span> When a node is observed in multiple discovery messages from different nodes, it is considered a single online node. This ensures accurate counting of <strong>discoverable<strong> active nodes in the network.
+                              <span>Counting Online Nodes: </span> When a node is observed in multiple discovery messages from different nodes, it is considered a single online node. This ensures accurate counting of <b>discoverable</b> active nodes in the network.
                           </div>
                       </div>
                   </div>
