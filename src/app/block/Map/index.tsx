@@ -50,7 +50,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
                   </svg>
               </div>
               <div>
-                  Don’t see your node on the map? <a target="_blank" href="/findNode">Help us count you in!</a>
+                  Don&apos;t see your node on the map? <a target="_blank" href="/findNode">Help us count you in!</a>
               </div>
               <div onClick={() => router.push("/findNode")} className={styles.svgItemRight}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
