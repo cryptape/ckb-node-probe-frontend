@@ -11,10 +11,10 @@
 <MarginContainer top={0.5} />
 
 ---
-#### Neuron
+#### For Neuron
 In the Neuron wallet, go to **Settings** -> **Data** -> **CKB Node Config & Storage**
 
-#### CKB mainnet node
+#### For CKB mainnet node
 Find the installation folder of your CKB mainnet node.
 
 
@@ -25,10 +25,10 @@ Find the installation folder of your CKB mainnet node.
 <MarginContainer top={0.5} />
 
 ---
-#### Neuron
+#### For Neuron
 Completely close the Neuron wallet. Ensure it's not running in the background.
 
-#### CKB mainnet node
+#### For CKB mainnet node
 Pause the running node.
 
 <MarginContainer top={2.5} />
@@ -38,7 +38,10 @@ Pause the running node.
 <MarginContainer top={0.5} />
 
 ---
+<MarginContainer top={0.5} />
+
 1. In the CKB folder(from step 1), locate and open the `ckb.toml` file.
+<MarginContainer top={0.5} />
 
 2. Scroll down to the **[network]** section, add the following bootnode entry:
 
@@ -46,16 +49,17 @@ Pause the running node.
 # Observer
 "/ip4/52.33.75.45/tcp/8124/p2p/QmPHzhEzekyjB14eQsnsVRxmymtYmAyntcfJgVYRiUq4Lb",
 ```
+<MarginContainer top={0.5} />
 
-3. Review and edit the bootnodes list, keeping a maximum of **3** closest to your location.
+3. Review and edit the bootnodes list, keeping a maximum of **3** closest to your location. Here's an example:
 
-Here's an example:
+<MarginContainer top={0.5} />
 
-![network.png](/network.png)
+<img src="/network.png" alt="network" style={{width: 750, border: '1px solid #6CE37C', padding: '12px 12px', borderRadius:12}} />
 
 4. Scroll down to **max_outbound_peers** and change its value to **20**.
 
-![maxpeer.png](/maxpeer.png)
+<img src="/maxpeer.png" alt="network" style={{width: 750, border: '1px solid #6CE37C', padding: '12px 12px', borderRadius:12}} />
 
 5. Save your changes to the **ckb.toml** file.
 
@@ -66,7 +70,7 @@ Here's an example:
 <MarginContainer top={0.5} />
 
 ---
-Within the same CKB folder, navigate to **data** -> **network** and delete the `peer_store`*` folder.
+Within the same CKB folder, navigate to **data** -> **network** and delete the `peer_store` folder.
 
 <MarginContainer top={2.5} />
 
@@ -76,6 +80,11 @@ Within the same CKB folder, navigate to **data** -> **network** and delete the `
 
 ---
 Re-open the Neuron wallet or reactivate your CKB node to apply the new configurations and ensure your node becomes discoverable by the CKB Node Probe.
+
+<MarginContainer top={2} />
+
+<TipsArea type="note" text="If you're on a VPN, your node will show up on the map where your VPN is, not your actual location." />
+
 
 <MarginContainer top={4} />
 
