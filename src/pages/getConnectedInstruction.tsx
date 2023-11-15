@@ -36,7 +36,7 @@ const getConnectedInstruction: React.FC<PostPageProps> = ({ mdxSource }) => {
 }
 
 export async function getStaticProps() {
-    const mdxSource = await serialize(fs.readFileSync(path.join(process.cwd(), 'src', 'docs', 'findNode.mdx'), 'utf8'))
+    const mdxSource = await serialize(fs.readFileSync(path.join(process.cwd(), 'src', 'docs', 'getConnectedInstruction.mdx'), 'utf8'))
     return { props: { mdxSource } }
 }
 
