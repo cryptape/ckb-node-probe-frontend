@@ -14,7 +14,7 @@ const Index: React.FC = () => {
     useEffect(() => {
         async function load() {
             const url = location.hostname === 'localhost' ? 'nodes-dev.ckbapp.dev' : location.hostname;
-            const loadData = await fetch(`//api-${url}/peer?unknown_offline_timeout=10080&network=${type}`);
+            const loadData = await fetch(`//api-${url}/peer?staging=true&unknown_offline_timeout=10080&network=${type}`);
             const result: Data[] = await loadData.json();
             setData(result)
         }
