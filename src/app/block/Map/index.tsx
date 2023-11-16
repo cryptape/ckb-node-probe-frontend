@@ -98,7 +98,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
                 return (
                     <div className={styles.popup}>
                         <Image width={20} height={26} src={'/lightClose.svg'} alt={'light-close'} />
-                        <span>Your node isn't currently visible,<a href="/getConnectedInstruction">let's connect!</a></span>
+                        <span>Your node isn`&apos;t currently visible,<Link href="/getConnectedInstruction">let`&apos;s connect!</Link></span>
                         <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => setErrorType(-1)}/>
                     </div>
                 );
@@ -120,7 +120,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
                                 Make sure your node is running and try again.
                             </div>
                             <div className={styles.Mt10}>
-                                If the issue persists, <a href="/findNode"> Check out other ways to find your Node ID.</a>
+                                If the issue persists, <Link href="/findNode"> Check out other ways to find your Node ID.</Link>
                             </div>
                         </div>
                         <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => setErrorType(-1)}/>
