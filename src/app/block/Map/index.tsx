@@ -72,7 +72,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
     };
 
     const getInMap = async() => {
-        const url = location.hostname === 'localhost' ? 'nodes-dev.ckbapp.dev' : 'api-nodes.ckb.dev';
+        const url = location.hostname === 'localhost' ? 'nodes-dev.ckbapp.dev' : 'nodes.ckb.dev';
         const response = await fetch(`//api-${url}/peer_status?peer_id=${inputValue}`);
         const nodeInMap = await response.json()
         setPendingStatus(false)
