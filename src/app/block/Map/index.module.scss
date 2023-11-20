@@ -1,37 +1,97 @@
 .mapGraph{
+  position: relative;
+  width: 100%;
   min-height: 500px;
   background-color: black;
   margin-bottom: 20px;
   border-radius: 16px;
-
-  .reportContainer {
-    width: 542px;
+  display: flex;
+  justify-content: center;
+  .popup {
+    position: absolute;
+    z-index: 999;
+    min-height: 44px;
+    background: #2E3038;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    padding: 0 16px;
+    color: white;
+    font-family: Cascadia Mono, monospace;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin: 0 8px;
+    .nodeIdInfo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .noNodeIdErrorInfo {
+      max-width: 340px;
+      padding: 10px 0;
+      .Mt10 {
+        margin-top: 10px;
+      }
+    }
+    span,div {
+      a {
+        color: #6CE37C !important;
+      }
+    }
+    img {
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 
-  .reportContainer,
-  .mobileReportContainer {
+  .searchNodeContainer {
     position: absolute;
     height: 36px;
     z-index: 9999;
     display: flex;
     align-items: center;
-    bottom: 25px;
-    background: #2E3038;
-    border-radius: 47px;
-    color: #ffffff;
-    font-size: 14px;
-    a {
-      color: #6CE37C !important;
-      text-decoration: none !important;
-    }
-    .svgItemLeft {
+    bottom: 40px;
+    gap: 16px;
+
+    .inputSearchNodeID {
+      width: 360px;
+      height: 36px;
+      border: none;
+      border-radius: 47px;
+      background: #2E3038;
+      color: white;
       display: flex;
       align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+      div {
+        width: 16px;
+        height: 16px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      input {
+        flex: 1;
+        background: none;
+        border: none;
+        color: white;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        &:focus-visible {
+          border: none;
+        }
+      }
     }
-    .svgItemRight {
-      display: flex !important;
-      align-items: center;
-      padding: 0 16px 0 10px;
+    .searchButton {
+      width: 117px;
+      height: 36px;
+      border: none;
+      border-radius: 36px;
     }
   }
 }
@@ -56,21 +116,37 @@
 
 @media (max-width: 768px) {
   .mapGraph {
-    .reportContainer {
-      display: none;
-    }
-    .mobileReportContainer {
-      width: 17.3125rem;
-      left: 45%;
-      transform: translateX(-50%);
-      padding: 0.56rem 0.75rem;
-      font-size: 0.75rem;
-      .svgItemLeft {
-        margin-right: 0.56rem;
+    flex-direction: column;
+    align-items: center;
+    .popup {
+      max-width: 323px;
+      .nodeIdInfo {
+        padding: 10px 0;
+        span {
+          max-width: 250px;
+          word-wrap: break-word;
+        }
       }
-      a {
-        display: flex;
-        align-items: center;
+    }
+    .searchNodeContainer {
+      align-self: flex-start;
+      height: 32px;
+      border-radius: 47px;
+      padding-left: 16px;
+      .inputSearchNodeID {
+        width: 177px;
+        input {
+          width: 121px;
+          z-index: 9999;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
+      }
+      .searchButton {
+        width: 94px;
+        height: 32px;
+        font-size: 12px;
       }
     }
   }

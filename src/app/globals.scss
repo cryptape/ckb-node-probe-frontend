@@ -200,6 +200,9 @@ h4 {
 }
 
 @media (max-width: 768px) {
+  .ckb-container {
+    margin: 0 16px;
+  }
   .ckb-header-bar {
     height: 75px;
   }
