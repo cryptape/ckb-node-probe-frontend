@@ -1,4 +1,6 @@
 .mapGraph{
+  position: relative;
+  width: 100%;
   min-height: 500px;
   background-color: black;
   margin-bottom: 20px;
@@ -46,7 +48,7 @@
     z-index: 9999;
     display: flex;
     align-items: center;
-    bottom: 25px;
+    bottom: 40px;
     gap: 16px;
 
     .inputSearchNodeID {
@@ -69,6 +71,9 @@
         background: none;
         border: none;
         color: white;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
         &:focus-visible {
           border: none;
         }
@@ -125,6 +130,9 @@
         input {
           width: 121px;
           z-index: 9999;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
         }
       }
       .searchButton {

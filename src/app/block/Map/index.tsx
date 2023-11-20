@@ -148,29 +148,32 @@ const Map: React.FC<MapProps> = ({ data }) => {
 
   return (
     <>
-      <div id="mapGraph" className={styles.mapGraph}>
-          {renderPopup()}
-          <div className={styles.searchNodeContainer}>
-              <div
-                  className={styles.inputSearchNodeID}
-              >
-                  <div>
-                    <Image src={'/search.svg'} alt={'search'} width={16} height={16} />
-                  </div>
-                  <input
-                      placeholder={'enter Node ID to check visibility'}
-                      value={inputValue}
-                      onChange={handleInputChange}/>
-              </div>
-              <button
-                  onClick={handleButtonClick}
-                  className={styles.searchButton}
-                  style={{background: pendingStatus ? 'grey' : 'linear-gradient(270deg, #0FF082 9.68%, #00AEFC 97.16%), #FFF'}}
-              >
-                  {checkStatus ? 'Check': 'Get'} Node ID
-              </button>
-          </div>
-      </div>
+        <div className={styles.mapGraph}>
+            <div id="mapGraph"  className={styles.mapGraph}></div>
+            {renderPopup()}
+            <div className={styles.searchNodeContainer}>
+                <div
+                    className={styles.inputSearchNodeID}
+                >
+                    <div>
+                        <Image src={'/search.svg'} alt={'search'} width={16} height={16} />
+                    </div>
+                    <input
+                        placeholder={'enter Node ID to check visibility'}
+                        value={inputValue}
+                        type='text'
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <button
+                    onClick={handleButtonClick}
+                    className={styles.searchButton}
+                    style={{background: pendingStatus ? 'grey' : 'linear-gradient(270deg, #0FF082 9.68%, #00AEFC 97.16%), #FFF'}}
+                >
+                    {checkStatus ? 'Check': 'Get'} Node ID
+                </button>
+            </div>
+        </div>
       <Quote />
     </>
   )
