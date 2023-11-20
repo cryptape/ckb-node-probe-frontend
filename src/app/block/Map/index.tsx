@@ -42,36 +42,33 @@ const Map: React.FC<MapProps> = ({ data }) => {
 
     const handleButtonClick = () => {
         setPendingStatus(true)
-        if(checkStatus) {
-            getInMap()
-        } else {
-            fetch("http://127.0.0.1:8114", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: '{"id":0,"jsonrpc":"2.0","method":"local_node_info","params":[]}'
-            })
-                .then(response => response.json())
-                .then(response => {
-                    if (response && response.result && response.result.node_id) {
-                        setNodeId(response.result.node_id);
-                        setIsNodeRunning(true);
-                        setCheckStatus(true)
-                        setErrorType(2)
-                        setInputValue(response.result.node_id)
-                        setPendingStatus(false)
-                    } else {
-                        setErrorType(3)
-                    }
-                })
-                .catch(error => {
+        fetch("http://127.0.0.1:8114", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: '{"id":0,"jsonrpc":"2.0","method":"local_node_info","params":[]}'
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response && response.result && response.result.node_id) {
+                    setNodeId(response.result.node_id);
+                    setIsNodeRunning(true);
+                    setCheckStatus(true)
+                    setErrorType(2)
+                    setInputValue(response.result.node_id)
                     setPendingStatus(false)
-                    console.error('Error fetching node info:', error);
+                } else {
                     setErrorType(3)
-                });
-        }
+                }
+            })
+            .catch(error => {
+                setPendingStatus(false)
+                console.error('Error fetching node info:', error);
+                setErrorType(3)
+            });
     };
 
     const getInMap = async() => {
+        setPendingStatus(true)
         const url = location.hostname === 'localhost' ? 'nodes-dev.ckbapp.dev' : 'nodes.ckb.dev';
         const response = await fetch(`//api-${url}/peer_status?peer_id=${inputValue}`);
         const nodeInMap = await response.json()
@@ -97,7 +94,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
                 return (
                     <div className={styles.popup}>
                         <Image width={20} height={26} src={'/lightClose.svg'} alt={'light-close'} />
-                        <span>Your node isn`&apos;t currently visible,<Link href="/getConnectedInstruction">let`&apos;s connect!</Link></span>
+                        <span>Your node isn&apos;t currently visible,<Link href="/getConnectedInstruction">let&apos;s connect!</Link></span>
                         <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => setErrorType(-1)}/>
                     </div>
                 );
@@ -155,7 +152,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
                 <div
                     className={styles.inputSearchNodeID}
                 >
-                    <div>
+                    <div onClick={getInMap}>
                         <Image src={'/search.svg'} alt={'search'} width={16} height={16} />
                     </div>
                     <input
@@ -163,6 +160,11 @@ const Map: React.FC<MapProps> = ({ data }) => {
                         value={inputValue}
                         type='text'
                         onChange={handleInputChange}
+                        onKeyDown={event => {
+                            if (event.key === 'Enter') {
+                                getInMap();
+                            }
+                        }}
                     />
                 </div>
                 <button
@@ -170,7 +172,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
                     className={styles.searchButton}
                     style={{background: pendingStatus ? 'grey' : 'linear-gradient(270deg, #0FF082 9.68%, #00AEFC 97.16%), #FFF'}}
                 >
-                    {checkStatus ? 'Check': 'Get'} Node ID
+                    Get Node ID
                 </button>
             </div>
         </div>
