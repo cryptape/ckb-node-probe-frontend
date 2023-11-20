@@ -7,18 +7,26 @@
 
 <MarginContainer top={2.5} />
 
-## Step 1: Retrieve your Node ID
+If you have changed the default RPC address `http://localhost:8114/` in your CKB [node configuration](#extra-check-your-node-configuration), make sure to replace it in the methods below.
+
+<MarginContainer top={2.5} />
+
+### Method 1:
+
 <MarginContainer top={0.5} />
 
 Make sure your node is up and running before you proceed
 
-#### Method 1:
-Button:
+<MarginContainer top={1} />
+
 <GetRequestInfo />
 
 <MarginContainer top={1.5} />
 
-#### Method 2:
+### Method 2:
+
+<MarginContainer top={0.5} />
+
 In the address bar of your browser, paste in the below text, and hit enter:
 ```html
 data:text/html,
@@ -31,9 +39,9 @@ data:text/html,
 
 <MarginContainer top={1.5} />
 
-#### Method 3:
+### Method 3:
 
-<MarginContainer top={1} />
+<MarginContainer top={0.5} />
 
 In a new Terminal (on MacOS/Linux) or Command Prompt (on Windows) window, send an [RPC request](https://github.com/nervosnetwork/ckb/tree/develop/rpc#method-local_node_info) to your node to retrieve its ID. This ID uniquely identifies your node in the network.
 
@@ -71,11 +79,10 @@ curl -X "POST" "http://localhost:8114/" \
 
 <MarginContainer top={1.5} />
 
-<TipsArea type="note" text="If you have changed the default RPC address `http://localhost:8114/` in your CKB [node configuration](#extra-check-your-node-configuration), make sure to replace it in the commands above." />
 
 <MarginContainer top={2.5} />
 
-## Step 2: Interpret the Response
+## Interpret the Response
 
 <MarginContainer top={0.5} />
 
@@ -117,17 +124,6 @@ The response should look something like this:
 
 In this response, the `node_id` field provides your Node ID. In this example, the Node ID is `QmdRWNKZ8EVJxhrDusbyYoYaGCQdStB4fSDotis7czUs`. You can either note down the Node ID or keep the entire output.
 
-<MarginContainer top={2.5} />
-
-## Step 3: Email us your Node ID
-
-<MarginContainer top={0.5} />
-
----
-
-<MarginContainer top={1} />
-
-Once you have your Node ID, EMAIL it to us at [ckb-node-probe@cryptape.com](ckb-node-probe@cryptape.com) along with any relevant details about your router setup. The team will assit you in making your node connectable.
 
 <MarginContainer top={4} />
 
