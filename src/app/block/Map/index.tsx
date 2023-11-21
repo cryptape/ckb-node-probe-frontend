@@ -86,7 +86,8 @@ const Map: React.FC<MapProps> = ({ data }) => {
                 return (
                     <div className={styles.popup}>
                         <Image width={20} height={26} src={'/lightOpen.svg'} alt={'light-open'} />
-                        <span>Your node is connected and visible on the network！</span>
+                        <span>&nbsp;<br />Your node is connectable and visible on the network！<br /> Map location is approximated based on IP address :) <br /> &nbsp;
+                        </span>
                         <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => setErrorType(-1)}/>
                     </div>
                 );
