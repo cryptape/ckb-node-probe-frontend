@@ -146,15 +146,15 @@ const Map: React.FC<MapProps> = ({ data }) => {
 
   return (
     <>
-        <div className={styles.mapGraph}>
-            <div id="mapGraph"  className={styles.mapGraph}></div>
-            {renderPopup()}
+        <div className={styles.mapGraphCt}>
+            <div id="mapGraph"  className={styles.mapGraph}>{renderPopup()}</div>
+            
             <div className={styles.searchNodeContainer}>
                 <div
                     className={styles.inputSearchNodeID}
                 >
                     <div onClick={getInMap}>
-                        <Image src={'/search.svg'} alt={'search'} width={16} height={16} />
+                        <Image src={'/search.svg'} alt={'search'} width={44} height={44} />
                     </div>
                     <input
                         placeholder={'enter Node ID to check visibility'}
@@ -168,13 +168,12 @@ const Map: React.FC<MapProps> = ({ data }) => {
                         }}
                     />
                 </div>
-                <button
+                <div
                     onClick={handleButtonClick}
                     className={styles.searchButton}
-                    style={{background: pendingStatus ? 'grey' : 'linear-gradient(270deg, #0FF082 9.68%, #00AEFC 97.16%), #FFF'}}
                 >
-                    Get Node ID
-                </button>
+                    Get My Node ID
+                </div>
             </div>
         </div>
       <Quote />
