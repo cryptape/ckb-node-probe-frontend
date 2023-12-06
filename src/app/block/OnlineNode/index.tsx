@@ -25,18 +25,27 @@ const OnlineNode: React.FC<OnlineNodeProps> = ({ nodes }) => {
                       </div>
                       <div className={popoverStyles.markdownText}>
                           <div className={popoverStyles.textItem}>
-                              Full Nodes are configured to support <Link href="https://github.com/nervosnetwork/ckb/blob/develop/network/src/protocols/support_protocols.rs#L18" target="_blank"> discovery, identify, relay, and sync protocols</Link> by default, allowing them to be discovered and visible to other nodes in the network.
+                            Our network thrives on connectivity and decentralization!
                           </div>
                           <div className={popoverStyles.textItem}>
-                              <span>Peer Discovery: </span> A bootnode with high uptime and strong connectivity discovers Full Nodes as peer nodes through message discovery protocol.
+                              <span>Probing & Connecting: </span>
+                                <p> - We probe nodes for connectivity through <Link href="https://github.com/code-monad/ckb-discovery" target="_blank"> message discovery protocol</Link>.</p>
+                                <p> - Nodes that successfully connect and are active earn their place on the map.</p>
+
                           </div>
                           <div className={popoverStyles.textItem}>
-                              <span>Counting Online Nodes: </span> When a node is observed in multiple discovery messages from different nodes, it is considered a single online node. This ensures accurate counting of connectable active nodes in the network.
+                              <span>Criteria for Counting: </span>
+                                  <p> - Full Nodes supporting <Link href="https://github.com/nervosnetwork/ckb/blob/develop/network/src/protocols/support_protocols.rs#L18" target="_blank"> discovery, identify, relay, and sync protocols</Link>.</p>
+                                  <p> - Full Nodes reported as reachable by at least four other nodes.</p>
+                                  <p> - Well-synced and activly validating transactions and blocks.</p>
+                          </div>
+                          <div className={popoverStyles.textItem}>
+                            Nodes meeting these criteria are visible on the map for at least <span>4 epochs</span>.
                           </div>
                       </div>
                   </div>
               </div>
-              <Link href="https://blog.cryptape.com/peer-discovery-in-nervos-network" target="_blank">Learn more</Link>
+              <Link href="https://docs.nervos.org/docs/basics/guides/mainnet/" target="_blank">Run CKB</Link>
           </>}>
               <QuestionCircleFilled/>
           </Popover>

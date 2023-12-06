@@ -40,7 +40,7 @@ const Header: React.FC = () => {
             <span className={styles.title}>CKB Node Probe</span>
           </Link>
           <Popover placement="bottom" content={<>
-            <div className={popoverStyles.strongTitle}>A Full Node stores and validates the entire blockchain.</div>
+            <div className={popoverStyles.strongTitle}>Monitoring connectivity of full nodes in the CKB network!</div>
             <br />
             <div className={`${popoverStyles.markdownWrapper} ${popoverStyles.tips}`}>
               <div className={popoverStyles.markdownHLine}></div>
