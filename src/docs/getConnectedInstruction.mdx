@@ -57,11 +57,19 @@ Pause the running node.
 
 <img src="/network.png" alt="network" style={{width: 750, border: '1px solid #6CE37C', padding: '12px 12px', borderRadius:12}} />
 
-4. Scroll down to **max_outbound_peers** and change its value to **20**.
+4. Scroll down to **whitelist_peers**, remove the **#** in front, and add the same bootnode entry:
+
+```bash
+"/ip4/52.33.75.45/tcp/8124/p2p/QmPHzhEzekyjB14eQsnsVRxmymtYmAyntcfJgVYRiUq4Lb"
+```
+<img src="/whitelist.png" alt="network" style={{width: 750, border: '1px solid #6CE37C', padding: '12px 12px', borderRadius:12}} />
+
+
+5. Scroll down to **max_outbound_peers** and change its value to **20**.
 
 <img src="/maxpeer.png" alt="network" style={{width: 750, border: '1px solid #6CE37C', padding: '12px 12px', borderRadius:12}} />
 
-5. Save your changes to the **ckb.toml** file.
+6. Save your changes to the **ckb.toml** file.
 
 <MarginContainer top={2.5} />
 
