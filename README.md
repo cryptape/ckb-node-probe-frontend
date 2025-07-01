@@ -20,17 +20,13 @@ git clone git@github.com:cryptape/ckb-node-probe-frontend.git
 - Install the necessary dependencies
 
 ```bash
-npm install
-# or
-yarn add
+pnpm install
 ```
 
 - Run the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
