@@ -1,0 +1,40 @@
+.upgradeBanner {
+  background-color: #26282F;
+  color: #6CE37C;
+  padding: 12px 20px;
+  text-align: center;
+  box-shadow: 0 1px 0 #464A57;
+  position: relative;
+  z-index: 1000;
+}
+
+.bannerContent {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.bannerText {
+  margin: 4px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  
+  a {
+    color: #00A7F1 !important;
+    text-decoration: underline !important;
+    font-weight: bold;
+    
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .upgradeBanner {
+    padding: 10px 16px;
+  }
+  
+  .bannerText {
+    font-size: 12px;
+  }
+}

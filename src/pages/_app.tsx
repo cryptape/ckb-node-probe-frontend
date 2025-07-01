@@ -3,6 +3,7 @@ import { FC, ReactElement } from 'react';
 import { AppProps } from 'next/app';
 import { StateProvider } from '../stateContext'
 import Header from "@/app/components/Header";
+import UpgradeBanner from "@/app/components/UpgradeBanner";
 import styles from "@/app/page.module.scss";
 import '../app/globals.scss'
 
@@ -11,6 +12,7 @@ const App: FC<AppProps> = ({ Component, pageProps }: AppProps) => {
     return (
         <StateProvider>
             <div>
+                <UpgradeBanner />
                 <Header />
                 <main className="ckb-container">
                     <PageComponent {...pageProps} />
