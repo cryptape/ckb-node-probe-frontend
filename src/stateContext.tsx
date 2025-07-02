@@ -6,7 +6,7 @@ interface StateContextProps {
 }
 
 const defaultState: StateContextProps = {
-    type: 'mirana',
+    type: 'main',
     setType: () => {},
 };
 
@@ -17,7 +17,7 @@ interface StateProviderProps {
 }
 
 export const StateProvider: React.FC<StateProviderProps> = ({ children }) => {
-    const [type, setType] = useState('mirana');
+    const [type, setType] = useState('main');
 
     return (
         <StateContext.Provider value={{ type, setType }}>

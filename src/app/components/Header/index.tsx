@@ -12,20 +12,21 @@ import Link from 'next/link'
 const Header: React.FC = () => {
   const { type, setType } = useStateContext();
   const [open, setOpen] = useState(false);
+  // https://github.com/cryptape/Marci/blob/master/src/models.rs#L28
   const items = [
     {
-      label: 'Mirana (CKB Mainnet)',
-      key: 'mirana',
+      label: 'Meepo (CKB Mainnet)',
+      key: 'main',
       onClick: () => {
-        setType('mirana')
+        setType('main')
         setOpen(false)
       }
     },
     {
-      label: 'Pudge (CKB Testnet)',
-      key: 'pudge',
+      label: 'Meepo (CKB Testnet)',
+      key: 'test',
       onClick: () => {
-        setType('pudge')
+        setType('test')
         setOpen(false)
       }
     }
