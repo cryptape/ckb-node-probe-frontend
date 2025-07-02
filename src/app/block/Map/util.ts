@@ -1,7 +1,7 @@
 import { Data } from '@/interface/page';
 import { isMobileDevice } from '@/app/utils';
 
-export function renderMapWithMarker(nodeInfo: any) {
+export function renderMapWithMarker(nodeInfo: any, onClose?: () => void) {
   const _window = window as any;
   const L = _window.L;
   const map = _window._map;
@@ -29,6 +29,7 @@ export function renderMapWithMarker(nodeInfo: any) {
 
   const popupContent = `
     <div class="node-info-popup">
+      <span class="popup-close-btn" onclick="window._closeNodePopup()">×</span>
       <div class="node-id-section">
         <div class="field-label">NODE ID</div>
         <div class="node-id-value">${nodeInfo.id}</div>
@@ -45,6 +46,16 @@ export function renderMapWithMarker(nodeInfo: any) {
       </div>
     </div>
   `;
+  
+  // Set up close handler
+  _window._closeNodePopup = () => {
+    map.closePopup();
+    // Remove the marker
+    map.removeLayer(marker);
+    if (onClose) onClose();
+    // Also clear URL params
+    window.history.pushState(null, '', window.location.pathname);
+  };
 
   marker
     .bindPopup(popupContent, {
@@ -54,6 +65,13 @@ export function renderMapWithMarker(nodeInfo: any) {
       offset: [20, 0],
     })
     .openPopup();
+    
+  // Handle popup close event
+  marker.on('popupclose', () => {
+    // Remove the marker when popup is closed
+    map.removeLayer(marker);
+    if (onClose) onClose();
+  });
 
   map.setView([nodeInfo.latitude, nodeInfo.longitude], 6);
 
@@ -212,6 +230,22 @@ export function renderMapWithMarker(nodeInfo: any) {
         font-weight: 600;
         margin-top: 4px;
         color: rgba(255,255,255,0.95);
+      }
+      
+      .popup-close-btn {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 20px;
+        color: #565A6A;
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.2s ease;
+        z-index: 10;
+      }
+      
+      .popup-close-btn:hover {
+        color: #0FF082;
       }
     `;
     document.head.appendChild(style);
