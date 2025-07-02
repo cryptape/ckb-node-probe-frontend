@@ -1,6 +1,6 @@
 "use client";
 import { Data } from "@/interface/page";
-import { renderMapGraph } from "./util";
+import { renderMapGraph, renderMapWithMarker } from "./util";
 import React, { useState, useEffect } from "react";
 import styles from './index.module.scss';
 import Quote from "@/app/components/Quote/Quote";
@@ -74,7 +74,14 @@ const Map: React.FC<MapProps> = ({ data }) => {
         const nodeInMap = await response.json()
         setPendingStatus(false)
         if(nodeInMap && nodeInMap['in_map']) {
-            setErrorType(0)
+            // Mark the node on the map
+            if (nodeInMap.info && nodeInMap.info.latitude && nodeInMap.info.longitude) {
+                const nodeInfo = {
+                    ...nodeInMap.info,
+                    id: nodeInMap.peer_id
+                };
+                renderMapWithMarker(nodeInfo);
+            }
         } else {
             setErrorType(1)
         }
