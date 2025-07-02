@@ -3,7 +3,10 @@
 # Become Discoverable by CKB Node Probe
 <MarginContainer top={2} />
 
-<Tips text={"Make sure your internet connection and firewall settings allow for external connections to your node."} type={"normal"} />
+<Tips 
+  text={"Make sure your internet connection and firewall settings allow for external connections to your node. We strongly recommend using [CKB v0.202.0](https://github.com/nervosnetwork/ckb/releases/tag/v0.202.0) or later to take advantage of the `HolePunching` protocol. This improves node discoverability — especially if your node is running behind [NAT](https://en.wikipedia.org/wiki/Network_address_translation). We'll walk you through how to confirm this setting in **Step 3** of the instructions."}
+  type={"normal"} 
+/>
 
 <MarginContainer top={2.5} />
 
@@ -69,7 +72,16 @@ Pause the running node.
 
 <img src="/maxpeer.png" alt="network" style={{width: 750, border: '1px solid #6CE37C', padding: '12px 12px', borderRadius:12}} />
 
-6. Save your changes to the **ckb.toml** file.
+6. Scroll down to **support_protocols** and make sure the `HolePunching` protocol is included in the list.
+
+<img src="/holepunching.png" alt="network" style={{width: 750, border: '1px solid #6CE37C', padding: '12px 12px', borderRadius:12}} />
+
+The `HolePunching` protocol helps nodes behind [NAT](https://en.wikipedia.org/wiki/Network_address_translation) become publicly accessible — significantly improving peer connectivity.
+
+- No manual configuration is needed if you initialized your config with [**CKB v0.202.0 or later**](https://github.com/nervosnetwork/ckb/releases/tag/v0.202.0) — the `HolePunching` protocol is already included by default in the `support_protocols` list.
+- If you're upgrading from an older version, make sure your `ckb.toml` includes `HolePunching` in the `support_protocols` list after replacing your binary.
+
+7. Save your changes to the **ckb.toml** file.
 
 <MarginContainer top={2.5} />
 
