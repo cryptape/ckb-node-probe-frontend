@@ -86,7 +86,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
                     id: nodeInMap.peer_id
                 };
                 // Update URL with search params
-                const params = new URLSearchParams(searchParams.toString());
+                const params = new URLSearchParams(searchParams?.toString() || '');
                 params.set('nodeId', nodeInMap.peer_id);
                 window.history.pushState(null, '', `?${params.toString()}`);
                 
@@ -168,7 +168,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
 
     useEffect(() => {
         // Check if nodeId is in search params and load that node
-        const nodeIdFromUrl = searchParams.get('nodeId');
+        const nodeIdFromUrl = searchParams?.get('nodeId');
         if (nodeIdFromUrl && data.length > 0) {
             setInputValue(nodeIdFromUrl);
             // Trigger search for the node
