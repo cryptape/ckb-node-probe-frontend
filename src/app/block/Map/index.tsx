@@ -1,11 +1,11 @@
 "use client";
 import { Data } from "@/interface/page";
-import { renderMapGraph } from "./util";
+import { renderMapGraph, renderMapWithMarker } from "./util";
 import React, { useState, useEffect } from "react";
 import styles from './index.module.scss';
 import Quote from "@/app/components/Quote/Quote";
 import Link from 'next/link'
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {Skeleton} from "antd";
 import Image from "next/image";
 interface MapProps {
@@ -20,6 +20,7 @@ declare global {
 
 const Map: React.FC<MapProps> = ({ data }) => {
     const router = useRouter()
+    const searchParams = useSearchParams()
     const [loading, setLoading] = useState(true)
     const [inputValue, setInputValue] = useState<string>('');
     const [isNodeRunning, setIsNodeRunning] = useState<boolean>(false);
@@ -67,14 +68,35 @@ const Map: React.FC<MapProps> = ({ data }) => {
             });
     };
 
-    const getInMap = async() => {
+    const getInMap = async(nodeId?: string) => {
         setPendingStatus(true)
+        const searchNodeId = nodeId || inputValue;
         const url = location.hostname === 'localhost' ? 'nodes-dev.ckbapp.dev' : 'nodes.ckb.dev';
-        const response = await fetch(`//api-${url}/peer_status?peer_id=${inputValue}`);
+        const response = await fetch(`//api-${url}/peer_status?peer_id=${searchNodeId}`, {
+            cache: 'no-cache'  // Prevent caching issues
+        });
         const nodeInMap = await response.json()
         setPendingStatus(false)
+        console.log('API Response:', nodeInMap); // Debug log
         if(nodeInMap && nodeInMap['in_map']) {
-            setErrorType(0)
+            // Mark the node on the map
+            if (nodeInMap.info && nodeInMap.info.latitude && nodeInMap.info.longitude) {
+                const nodeInfo = {
+                    ...nodeInMap.info,
+                    id: nodeInMap.peer_id
+                };
+                // Update URL with search params
+                const params = new URLSearchParams(searchParams?.toString() || '');
+                params.set('nodeId', nodeInMap.peer_id);
+                window.history.pushState(null, '', `?${params.toString()}`);
+                
+                renderMapWithMarker(nodeInfo, () => {
+                    // Clear search params when popup is closed
+                    window.history.pushState(null, '', window.location.pathname);
+                    // Clear input value
+                    setInputValue('');
+                });
+            }
         } else {
             setErrorType(1)
         }
@@ -88,7 +110,11 @@ const Map: React.FC<MapProps> = ({ data }) => {
                         <Image width={20} height={26} src={'/lightOpen.svg'} alt={'light-open'} />
                         <span>&nbsp;<br />Your node is connectable and visible on the network！<br /> Map location is approximated based on IP address :) <br /> &nbsp;
                         </span>
-                        <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => setErrorType(-1)}/>
+                        <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => {
+                            setErrorType(-1);
+                            // Clear search params when closing popup
+                            window.history.pushState(null, '', window.location.pathname);
+                        }}/>
                     </div>
                 );
             case 1:
@@ -96,7 +122,11 @@ const Map: React.FC<MapProps> = ({ data }) => {
                     <div className={styles.popup}>
                         <Image width={20} height={26} src={'/lightClose.svg'} alt={'light-close'} />
                         <span>Your node isn&apos;t currently visible,<Link href="/getConnectedInstruction">let&apos;s connect!</Link></span>
-                        <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => setErrorType(-1)}/>
+                        <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => {
+                            setErrorType(-1);
+                            // Clear search params when closing popup
+                            window.history.pushState(null, '', window.location.pathname);
+                        }}/>
                     </div>
                 );
             case 2:
@@ -106,7 +136,11 @@ const Map: React.FC<MapProps> = ({ data }) => {
                             <span>Node ID: <span>{nodeId}</span></span>
                             <Image width={20} height={26} src={'/copy.svg'} alt={'light-open'} onClick={() => copyNodeIdToClipboard()} />
                         </div>
-                        <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => setErrorType(-1)}/>
+                        <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => {
+                            setErrorType(-1);
+                            // Clear search params when closing popup
+                            window.history.pushState(null, '', window.location.pathname);
+                        }}/>
                     </div>
                 );
             case 3:
@@ -120,7 +154,11 @@ const Map: React.FC<MapProps> = ({ data }) => {
                                 If the issue persists, <Link href="/findNode"> Check out other ways to find your Node ID.</Link>
                             </div>
                         </div>
-                        <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => setErrorType(-1)}/>
+                        <Image width={18} height={18} src={'/close.svg'} alt={'light-open'} onClick={() => {
+                            setErrorType(-1);
+                            // Clear search params when closing popup
+                            window.history.pushState(null, '', window.location.pathname);
+                        }}/>
                     </div>
                 );
             default:
@@ -129,8 +167,16 @@ const Map: React.FC<MapProps> = ({ data }) => {
     };
 
     useEffect(() => {
-
-    }, []);
+        // Check if nodeId is in search params and load that node
+        const nodeIdFromUrl = searchParams?.get('nodeId');
+        if (nodeIdFromUrl && data.length > 0) {
+            setInputValue(nodeIdFromUrl);
+            // Trigger search for the node
+            setTimeout(() => {
+                getInMap(nodeIdFromUrl);
+            }, 1000); // Small delay to ensure map is loaded
+        }
+    }, [searchParams, data]);
 
     useEffect(() => {
         renderMapGraph(data);
@@ -141,7 +187,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
                 window._map = null;
             }
         }
-    }, [data, router, router.asPath]);
+    }, [data]);
 
 
   return (
@@ -153,7 +199,7 @@ const Map: React.FC<MapProps> = ({ data }) => {
                 <div
                     className={styles.inputSearchNodeID}
                 >
-                    <div onClick={getInMap}>
+                    <div onClick={() => getInMap()}>
                         <Image src={'/search.svg'} alt={'search'} width={44} height={44} />
                     </div>
                     <input
