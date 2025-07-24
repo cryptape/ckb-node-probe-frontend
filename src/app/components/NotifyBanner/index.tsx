@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './NotifyBanner.module.scss';
 
-const UpgradeBanner: React.FC = () => {
+const NotifyBanner: React.FC = () => {
   return (
     <div className={styles.upgradeBanner}>
       <div className={styles.bannerContent}>
@@ -16,4 +16,4 @@ const UpgradeBanner: React.FC = () => {
   );
 };
 
-export default UpgradeBanner;
+export default NotifyBanner;
