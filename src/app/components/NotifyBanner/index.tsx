@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './UpgradeBanner.module.scss';
+import styles from './NotifyBanner.module.scss';
 
 const UpgradeBanner: React.FC = () => {
   return (
